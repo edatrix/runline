@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
                                        username: auth["info"]["name"],
                                        email: auth["info"]["email"])
   end
+
 end
