@@ -6647,3 +6647,262 @@ Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-01-08 13:15:43 -0700
 
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-08 13:15:43 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-08 13:21:15 -0700
+Processing by HomePageController#index as HTML
+  Rendered home_page/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-08 13:21:15 -0700
+
+
+Started GET "/assets/home_page.css?body=1" for 127.0.0.1 at 2014-01-08 13:21:15 -0700
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-01-08 13:21:15 -0700
+
+
+Started GET "/assets/dashboards.css?body=1" for 127.0.0.1 at 2014-01-08 13:21:15 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:15 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:15 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:15 -0700
+
+
+Started GET "/assets/dashboards.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:15 -0700
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:15 -0700
+
+
+Started GET "/assets/home_page.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:15 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:15 -0700
+
+
+Started GET "/login" for 127.0.0.1 at 2014-01-08 13:21:19 -0700
+
+
+Started GET "/auth/mapmyfitness" for 127.0.0.1 at 2014-01-08 13:21:19 -0700
+
+
+Started GET "/login" for 127.0.0.1 at 2014-01-08 13:21:20 -0700
+
+
+Started GET "/auth/mapmyfitness" for 127.0.0.1 at 2014-01-08 13:21:20 -0700
+
+
+Started GET "/auth/mapmyfitness/callback?oauth_token=88c3fee1fe1c7954f5dd5f3cb4133c04052cdb346&oauth_verifier=7GILF" for 127.0.0.1 at 2014-01-08 13:21:25 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"oauth_token"=>"88c3fee1fe1c7954f5dd5f3cb4133c04052cdb346", "oauth_verifier"=>"7GILF", "provider"=>"mapmyfitness"}
+DEPRECATION WARNING: This dynamic method is deprecated. Please use e.g. Post.find_or_create_by(name: 'foo') instead. (called from find_or_create_by_auth at /Users/billygriffin/gschool_projects/runline/app/models/user.rb:6)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."provider" = 'mapmyfitness' AND "users"."uid" = '24009757' ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Redirected to http://localhost:3000/dashboard
+Completed 302 Found in 5ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/dashboard" for 127.0.0.1 at 2014-01-08 13:21:26 -0700
+Processing by DashboardsController#index as HTML
+  Rendered dashboards/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-08 13:21:26 -0700
+
+
+Started GET "/assets/dashboards.css?body=1" for 127.0.0.1 at 2014-01-08 13:21:26 -0700
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-01-08 13:21:26 -0700
+
+
+Started GET "/assets/home_page.css?body=1" for 127.0.0.1 at 2014-01-08 13:21:26 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:26 -0700
+
+
+Started GET "/assets/dashboards.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:26 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:26 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:26 -0700
+
+
+Started GET "/assets/home_page.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:26 -0700
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:26 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:26 -0700
+
+
+Started GET "/logout" for 127.0.0.1 at 2014-01-08 13:21:32 -0700
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-08 13:21:32 -0700
+Processing by HomePageController#index as HTML
+  Rendered home_page/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-08 13:21:32 -0700
+
+
+Started GET "/assets/dashboards.css?body=1" for 127.0.0.1 at 2014-01-08 13:21:32 -0700
+
+
+Started GET "/assets/home_page.css?body=1" for 127.0.0.1 at 2014-01-08 13:21:32 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:32 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:32 -0700
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-01-08 13:21:32 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:32 -0700
+
+
+Started GET "/assets/dashboards.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:32 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:32 -0700
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:32 -0700
+
+
+Started GET "/assets/home_page.js?body=1" for 127.0.0.1 at 2014-01-08 13:21:32 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-08 13:22:21 -0700
+Processing by HomePageController#index as HTML
+  Rendered home_page/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 47ms (Views: 46.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/dashboards.css?body=1" for 127.0.0.1 at 2014-01-08 13:22:22 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-08 13:22:22 -0700
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-01-08 13:22:22 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-08 13:22:22 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-08 13:22:22 -0700
+
+
+Started GET "/assets/home_page.css?body=1" for 127.0.0.1 at 2014-01-08 13:22:22 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-08 13:22:22 -0700
+
+
+Started GET "/assets/dashboards.js?body=1" for 127.0.0.1 at 2014-01-08 13:22:22 -0700
+
+
+Started GET "/assets/home_page.js?body=1" for 127.0.0.1 at 2014-01-08 13:22:22 -0700
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-01-08 13:22:22 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-08 13:22:22 -0700
+
+
+Started GET "/login" for 127.0.0.1 at 2014-01-08 13:22:24 -0700
+
+
+Started GET "/auth/mapmyfitness" for 127.0.0.1 at 2014-01-08 13:22:24 -0700
+
+
+Started GET "/login" for 127.0.0.1 at 2014-01-08 13:22:25 -0700
+
+
+Started GET "/auth/mapmyfitness" for 127.0.0.1 at 2014-01-08 13:22:25 -0700
+
+
+Started GET "/auth/mapmyfitness/callback?oauth_token=240bfaaafa9742a901b4083381f421b5052cdb387&oauth_verifier=PJHCP" for 127.0.0.1 at 2014-01-08 13:22:27 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"oauth_token"=>"240bfaaafa9742a901b4083381f421b5052cdb387", "oauth_verifier"=>"PJHCP", "provider"=>"mapmyfitness"}
+DEPRECATION WARNING: This dynamic method is deprecated. Please use e.g. Post.find_or_create_by(name: 'foo') instead. (called from find_or_create_by_auth at /Users/billygriffin/gschool_projects/runline/app/models/user.rb:6)
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."provider" = 'mapmyfitness' AND "users"."uid" = '24009757' ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Redirected to http://localhost:3000/dashboard
+Completed 302 Found in 5ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/dashboard" for 127.0.0.1 at 2014-01-08 13:22:28 -0700
+Processing by DashboardsController#index as HTML
+  Rendered dashboards/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-08 13:22:28 -0700
+
+
+Started GET "/assets/dashboards.css?body=1" for 127.0.0.1 at 2014-01-08 13:22:28 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-08 13:22:28 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-08 13:22:28 -0700
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-01-08 13:22:28 -0700
+
+
+Started GET "/assets/home_page.css?body=1" for 127.0.0.1 at 2014-01-08 13:22:28 -0700
+
+
+Started GET "/assets/dashboards.js?body=1" for 127.0.0.1 at 2014-01-08 13:22:28 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-08 13:22:28 -0700
+
+
+Started GET "/assets/home_page.js?body=1" for 127.0.0.1 at 2014-01-08 13:22:28 -0700
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-01-08 13:22:28 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-08 13:22:28 -0700
+
+
+Started GET "/logout" for 127.0.0.1 at 2014-01-08 13:22:30 -0700
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-08 13:22:30 -0700
+Processing by HomePageController#index as HTML
+  Rendered home_page/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 54ms (Views: 53.5ms | ActiveRecord: 0.0ms)
