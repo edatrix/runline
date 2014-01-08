@@ -3,6 +3,7 @@ Runline::Application.routes.draw do
 
   match "/login" => redirect("/auth/mapmyfitness"), as: :login, via: :get
   match "/auth/:provider/callback", to: "sessions#create", via: :get
+  match "/logout", to: "sessions#destroy", via: :get
 
   resources :users
 end
