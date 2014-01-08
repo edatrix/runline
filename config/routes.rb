@@ -5,5 +5,7 @@ Runline::Application.routes.draw do
   match "/auth/:provider/callback", to: "sessions#create", via: :get
   match "/logout", to: "sessions#destroy", via: :get
 
+  match "/dashboard", to: "dashboards#index", via: :get
+
   resources :users
 end
