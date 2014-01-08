@@ -7,7 +7,6 @@ gem 'omniauth-mapmyfitness'
 
 # Use postgresql as the database for Active Record
 group :development, :test do
-  gem 'pg'
   gem 'capybara'
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -16,7 +15,10 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'launchy'
+end
 
+group :production do
+  gem 'pg'
 end
 
 # Use SCSS for stylesheets
