@@ -1045,3 +1045,16 @@ Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
   [1m[36m (2.6ms)[0m  [1mTRUNCATE TABLE "users" RESTART IDENTITY CASCADE;[0m
   [1m[35m (0.6ms)[0m  ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL
   [1m[36m (1.5ms)[0m  [1mROLLBACK[0m
+  [1m[36m (116.5ms)[0m  [1mDROP DATABASE IF EXISTS "runline_test"[0m
+  [1m[35m (299.3ms)[0m  CREATE DATABASE "runline_test" ENCODING = 'unicode'
+  [1m[36mSQL (2.9ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.7ms)[0m  CREATE TABLE "runs" ("id" serial primary key, "name" character varying(255), "distance" integer, "run_time" integer, "workout_datetime" character varying(255), "user_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (10.7ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "created_at" timestamp, "updated_at" timestamp, "provider" character varying(255), "uid" character varying(255)) [0m
+  [1m[35m (1.2ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (1.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.4ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140108230106')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140107210718')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140108000516')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
