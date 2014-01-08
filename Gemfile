@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 gem 'rspec-rails'
-gem 'omniauth-facebook'
+gem 'omniauth-mapmyfitness'
 
 # Use postgresql as the database for Active Record
 group :development, :test do
