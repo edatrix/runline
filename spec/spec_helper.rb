@@ -3,6 +3,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'capybara/rspec'
 
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -40,4 +41,27 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+  config.include(Capybara, :type => :integration)
+
+  config.before(:suite) do
+    DatabaseCleaner.clean_with :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.start
+  end
+
+  config.before(:each, js: true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  # Force the driver to wait till the page finishes loading
+  config.after(:each, js: true) do
+    current_path.should == current_path
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 end

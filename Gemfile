@@ -3,9 +3,21 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 gem 'rspec-rails'
+gem 'omniauth-facebook'
 
 # Use postgresql as the database for Active Record
-gem 'pg'
+group :development, :test do
+  gem 'pg'
+  gem 'capybara'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'launchy'
+
+end
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

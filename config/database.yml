@@ -19,6 +19,7 @@ development:
   encoding: unicode
   database: runline_development
   localhost: 3000
+  host: localhost
   pool: 5
   
 
@@ -48,6 +49,7 @@ test:
   encoding: unicode
   database: runline_test
   localhost: 3000
+  host: localhost
   pool: 5
 
 production:
