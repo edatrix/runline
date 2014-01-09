@@ -8,8 +8,10 @@ gem 'omniauth-mapmyfitness'
 # Use postgresql as the database for Active Record
 group :development, :test do
   gem 'capybara'
+  gem 'rspec-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'sqlite3'
 end
 
 group :test do
