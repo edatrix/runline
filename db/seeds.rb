@@ -3,8 +3,7 @@ class Seeder
   def initialize
     destroy_users
     destroy_runs
-    user = generate_user
-    generate_runs(user)
+    generate_users
   end
 
   def destroy_users
@@ -24,6 +23,7 @@ class Seeder
       username: Faker::Name.name,
       email: Faker::Internet.email
       )
+    generate_runs(user)
   end
 
   def generate_runs(user)
