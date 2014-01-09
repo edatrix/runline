@@ -35,4 +35,14 @@ describe Run do
     run.update(name: nil)
     expect(run).to be_valid
   end
+
+  xit "converts the distance of a run into miles" do
+    run = FactoryGirl.create(:run)
+    expect(run.mileage).to eq(3.1)
+  end
+
+  xit "converts the run time to minutes and seconds" do 
+    run = FactoryGirl.create(:run)
+    expect(run.run_time).to eq("7:10")
+  end
 end
