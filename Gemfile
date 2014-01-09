@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
-gem 'rspec-rails'
 gem 'omniauth-mapmyfitness'
 gem 'faker'
 
