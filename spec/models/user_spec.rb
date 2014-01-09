@@ -2,20 +2,17 @@ require 'spec_helper'
 
 describe User do
 
-  it "should require a username" do 
+  it { should validate_presence_of(:email) }
+  it { should validate_presence_of(:username) }
+  it { should validate_uniqueness_of(:username) }
+  it { should have_many(:friendships) }
+  it { should have_many(:friends) }
+  it { should have_many(:inverse_friendships) }
+  it { should have_many(:inverse_friends) }
+
+  it "should be created with valid attributes" do 
     user = FactoryGirl.create(:user)
     user.should be_valid
-  end
-
-  it "should require a unique username" do
-    user = FactoryGirl.create(:user)
-    user.should be_valid
-    FactoryGirl.build(:user).should_not be_valid
-  end
-
-  it "should require an email" do
-    user = FactoryGirl.create(:user)
-    user.update(:email => "").should be_false
   end
 
   it "can have many runs" do 
