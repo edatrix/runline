@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140109172748) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "friendships", force: true do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
@@ -23,7 +20,7 @@ ActiveRecord::Schema.define(version: 20140109172748) do
     t.datetime "updated_at"
   end
 
-  add_index "friendships", ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", using: :btree
+  add_index "friendships", ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id"
 
   create_table "runs", force: true do |t|
     t.string   "name"
@@ -35,7 +32,7 @@ ActiveRecord::Schema.define(version: 20140109172748) do
     t.datetime "updated_at"
   end
 
-  add_index "runs", ["user_id"], name: "index_runs_on_user_id", using: :btree
+  add_index "runs", ["user_id"], name: "index_runs_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "username"

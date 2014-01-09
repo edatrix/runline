@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.1'
 gem 'rspec-rails'
 gem 'omniauth-mapmyfitness'
+gem 'faker'
 
 # Use postgresql as the database for Active Record
 group :development, :test do
