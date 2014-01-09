@@ -5,7 +5,7 @@ require 'capybara/rspec'
 describe "User Signup" do
   it "can see login button" do
     page.visit root_path 
-    expect(page).to have_content "Login with Facebook"
+    expect(page).to have_content "Login with MapMyFitness"
   end
 
   # it "clicks the login button" do

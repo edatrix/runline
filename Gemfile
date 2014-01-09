@@ -2,22 +2,29 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
-gem 'rspec-rails'
 gem 'omniauth-mapmyfitness'
 gem 'faraday'
+gem 'faker'
+
 
 # Use postgresql as the database for Active Record
 group :development, :test do
-  gem 'pg'
   gem 'capybara'
+  gem 'rspec-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'sqlite3'
+  gem 'shoulda-matchers'
 end
 
 group :test do
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'factory_girl_rails'
+end
 
+group :production do
+  gem 'pg'
 end
 
 # Use SCSS for stylesheets
