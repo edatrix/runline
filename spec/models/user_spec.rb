@@ -18,10 +18,10 @@ describe User do
     user.update(:email => "").should be_false
   end
 
-  xit "can have many runs" do 
+  it "can have many runs" do 
     user = FactoryGirl.create(:user)
-    run = FactoryGirl.create(:run)
-    second_run = FactoryGirl.create(:second_run)
+    run = FactoryGirl.create(:run, user_id: user.id)
+    second_run = FactoryGirl.create(:second_run, user_id: user.id)
     expect(user.runs.size).to eq 2
   end
 

@@ -30,6 +30,13 @@ describe Run do
     expect(run).not_to be_valid
   end
 
+  xit "validates that a run is unique (does not occur at the same time as another run)" do
+    run = FactoryGirl.create(:run)
+    run2 = FactoryGirl.build(:third_run)
+    puts run.workout_datetime
+    expect(run).not_to be_valid
+  end
+
   it "should be valid without a name" do 
     run = FactoryGirl.create(:run)
     run.update(name: nil)
