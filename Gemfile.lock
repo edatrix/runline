@@ -53,6 +53,8 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
     hashie (2.0.5)
     hike (1.2.3)
     i18n (0.6.9)
@@ -73,6 +75,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.2)
     multi_xml (0.5.5)
+    multipart-post (1.2.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     oauth (0.4.7)
@@ -159,6 +162,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   database_cleaner
+  faraday
   jbuilder (~> 1.2)
   jquery-rails
   launchy
