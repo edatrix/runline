@@ -1,4 +1,5 @@
 class Seeder
+
   def initialize
     destroy_users
     destroy_runs
