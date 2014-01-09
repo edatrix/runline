@@ -15,17 +15,15 @@ class Seeder
     Run.destroy_all
   end
 
+  def generate_users
+    3.times { generate_user }
+  end
+
   def generate_user
-    user = User.new(
+    user = User.create(
       username: Faker::Name.name,
       email: Faker::Internet.email
       )
-
-    if user.save
-      puts "User: #{user.username} created!"
-    end
-
-    user
   end
 
   def generate_runs(user)
@@ -35,8 +33,8 @@ class Seeder
   def generate_run(user)
     run = Run.create(
       name: "quick jog",
-      distance: 1600,
-      run_time: 1200,
+      distance: rand(1000..1600),
+      run_time: rand(800..1200),
       workout_datetime: "2014-01-09 10:29:09 -0700",
       user_id: user.id
       )
