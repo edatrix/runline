@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user 
 
   def self.find_or_create_by_auth(auth)
-    find_or_create_by_provider_and_uid(auth["provider"], 
+    find_or_create_by_provider_and_uid(auth["provider"],
                                        auth["uid"],
                                        username: auth["info"]["name"],
                                        email: auth["info"]["email"])
