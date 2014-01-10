@@ -5,6 +5,7 @@ gem 'rails', '4.0.1'
 gem 'omniauth-mapmyfitness'
 gem 'faraday'
 gem 'faker'
+gem 'bootstrap-sass'
 
 
 # Use postgresql as the database for Active Record
