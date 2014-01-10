@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 gem 'rspec-rails'
-gem 'omniauth-mapmyfitness'
+gem 'omniauth-mapmyfitness-oauth2', :path => "../omniauth-mapmyfitness"
 
 # Use postgresql as the database for Active Record
 group :development, :test do
@@ -13,6 +13,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'sqlite3'
   gem 'shoulda-matchers'
+  gem 'pry'
 end
 
 group :test do
