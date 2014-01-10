@@ -8,4 +8,7 @@ Runline::Application.routes.draw do
   match "/dashboard", to: "dashboards#show", via: :get
 
   resources :users
+  
+  resources :friendships
+    get "/friends" => "friendships#index"
 end
