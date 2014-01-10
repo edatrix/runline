@@ -26,13 +26,15 @@ describe Run do
     expect(run).to be_valid
   end
 
-  xit "converts the distance of a run into miles" do
+  it "converts the distance of a run into miles" do
     run = FactoryGirl.create(:run)
-    expect(run.mileage).to eq(3.1)
+    expect(run.miles).to eq("3.1")
+    run2 = FactoryGirl.create(:second_run)
+    expect(run2.miles).to eq("6.2")
   end
 
   xit "converts the run time to minutes and seconds" do 
     run = FactoryGirl.create(:run)
-    expect(run.run_time).to eq("7:10")
+    expect(run.time_in_minutes).to eq("7:10")
   end
 end
