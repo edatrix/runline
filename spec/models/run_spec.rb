@@ -33,8 +33,13 @@ describe Run do
     expect(run2.miles).to eq("6.2")
   end
 
-  xit "converts the run time to minutes and seconds" do 
+  it "converts the run time to minutes and seconds" do 
     run = FactoryGirl.create(:run)
-    expect(run.time_in_minutes).to eq("7:10")
+    expect(run.time_in_minutes).to eq("15:40")
+  end
+
+  xit "calculates the mile pace for a run in minutes and seconds" do 
+    run = FactoryGirl.create(:run)
+    expect(run.pace).to eq("5:03")
   end
 end

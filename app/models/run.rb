@@ -11,7 +11,11 @@ class Run < ActiveRecord::Base
     result.to_s[0..-15]
   end
 
-  # def time_in_minutes
-  #   result = self.run_time 
+  def time_in_minutes
+    Time.at(self.run_time).utc.strftime("%M:%S")
+  end
+
+  # def pace
+    
   # end
 end
