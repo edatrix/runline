@@ -4,6 +4,7 @@ class Seeder
     destroy_users
     destroy_runs
     generate_users
+    generate_friends
   end
 
   def destroy_users
@@ -38,6 +39,13 @@ class Seeder
       workout_datetime: "2014-01-09 10:29:09 -0700",
       user_id: user.id
       )
+  end
+
+  def generate_friends
+
+    Friendship.create(user_id: 1, friend_id: 2)
+    Friendship.create(user_id: 1, friend_id: 3)
+    Friendship.create(user_id: 2, friend_id: 3)
   end
 end
 
