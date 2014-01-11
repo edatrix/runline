@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def add_friend(friend)
-    unless current_friends.include?(friend)
+    unless total_approved_friends.include?(friend)
       friend = User.find_by(username: friend)
       Friendship.create(user_id: id, friend_id: friend.id, status: "pending")
     end
@@ -34,17 +34,16 @@ class User < ActiveRecord::Base
     friendship.update(status: "approved")
   end
 
-  def unfriend(friend)
-    if current_friends.include?(friend)
-      friend = User.find_by(username: friend)
-      friendship = Friendship.find_by(user_id: id, friend_id: friend.id)
-      friendship.delete
-    end
+  def reject_friend(friend)
+    friendship = Friendship.find_by(user_id: friend.id, friend_id: id)
+    friendship.update(status: "rejected")
   end
 
-  def current_friends
-    friends.collect do |friend|
-      friend.username
+  def unfriend(friend)
+    if total_approved_friends.include?(friend)
+      friendship = Friendship.find_by(user_id: id, friend_id: friend.id) ||
+                   Friendship.find_by(user_id: friend.id, friend_id: id)
+      friendship.update(status: "rejected")
     end
   end
 
@@ -60,13 +59,16 @@ class User < ActiveRecord::Base
 
 
 
-
   def approved_friends
-    approved_friendships.where(user_id: id)
+    approved_friendships.where(user_id: id).collect do |friendship|
+      friendship.friend
+    end 
   end
 
   def approved_inverse_friends
-    approved_inverse_friendships.where(friend_id: id)
+    approved_inverse_friendships.where(friend_id: id).collect do |friendship|
+      friendship.user
+    end
   end
 
   def approved_friendships
@@ -78,11 +80,15 @@ class User < ActiveRecord::Base
   end
 
   def pending_friends
-    pending_friendships.where(user_id: id)
+    pending_friendships.where(user_id: id).collect do |friendship|
+      friendship.friend
+    end 
   end
 
   def pending_inverse_friends
-    pending_inverse_friendships.where(friend_id: id)
+    pending_inverse_friendships.where(friend_id: id).collect do |friendship|
+      friendship.user
+    end
   end
 
   def pending_friendships
@@ -92,7 +98,5 @@ class User < ActiveRecord::Base
   def pending_inverse_friendships
     inverse_friendships.where(status: "pending")      
   end
-
-
 
 end
