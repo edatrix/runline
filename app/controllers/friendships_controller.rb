@@ -7,11 +7,13 @@ class FriendshipsController < ApplicationController
 
   def create
     current_user.add_friend(friendship_params)
+    flash.notice = "Your request to #{friendship_params} has been sent!"
     redirect_to :back
   end
 
   def destroy
     current_user.unfriend(friendship_params)
+    flash.notice = "Your friendship with #{friendship_params} has been terminated!"
     redirect_to :back
 
   end

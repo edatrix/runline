@@ -7,9 +7,16 @@ describe User do
     @user2 = FactoryGirl.create(:user, username: "user2")
     @user3 = FactoryGirl.create(:user, username: "user3")
     @user4 = FactoryGirl.create(:user, username: "user4")
-    Friendship.create(user_id: 1, friend_id: 2)
-    Friendship.create(user_id: 1, friend_id: 3)
-    Friendship.create(user_id: 2, friend_id: 3)
+    @user5 = FactoryGirl.create(:user, username: "user5")
+    @user6 = FactoryGirl.create(:user, username: "user6")
+    @user7 = FactoryGirl.create(:user, username: "user7")
+
+    Friendship.create(user_id: 1, friend_id: 2, status: "approved")
+    Friendship.create(user_id: 1, friend_id: 3, status: "approved")
+    Friendship.create(user_id: 7, friend_id: 1, status: "approved")
+    Friendship.create(user_id: 4, friend_id: 3, status: "approved")
+    Friendship.create(user_id: 2, friend_id: 3, status: "pending")
+    Friendship.create(user_id: 6, friend_id: 1, status: "pending")
   end
 
   it { should validate_presence_of(:email) }
@@ -32,15 +39,16 @@ describe User do
 
   it "can count its friends" do
     expect(@user1.friends.count).to eq(2)
-  end
+  end 
 
   it "counts total friends" do
     expect(@user2.total_friends.count).to eq(2)
   end
 
-  it "can add a friend" do
+  it "can request a friend" do
     @user1.add_friend(@user4.username)
-    expect(@user1.total_friends.count).to eq(3)
+    @user1.add_friend(@user5.username)
+    expect(@user1.total_pending_friends.count).to eq(3)
   end
 
   it "can remove a friend" do
@@ -48,8 +56,13 @@ describe User do
     expect(@user1.friends.count).to eq(1)
   end
 
+  it "can count approved friends" do
+    expect(@user1.total_approved_friends.count).to eq(3)
+  end
 
-
-
+  it "can approve a friend" do
+    @user1.approve_friend(@user6)
+    expect(@user1.total_approved_friends.count).to eq(4)
+  end
 
 end

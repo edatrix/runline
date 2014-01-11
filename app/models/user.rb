@@ -25,15 +25,20 @@ class User < ActiveRecord::Base
   def add_friend(friend)
     unless current_friends.include?(friend)
       friend = User.find_by(username: friend)
-      Friendship.create(user_id: id, friend_id: friend.id)
+      Friendship.create(user_id: id, friend_id: friend.id, status: "pending")
     end
+  end
+
+  def approve_friend(friend)
+    friendship = Friendship.find_by(user_id: friend.id, friend_id: id)
+    friendship.update(status: "approved")
   end
 
   def unfriend(friend)
     if current_friends.include?(friend)
-     friend = User.find_by(username: friend)
-     friendship = Friendship.find_by(user_id: id, friend_id: friend.id)
-     friendship.delete
+      friend = User.find_by(username: friend)
+      friendship = Friendship.find_by(user_id: id, friend_id: friend.id)
+      friendship.delete
     end
   end
 
@@ -42,5 +47,52 @@ class User < ActiveRecord::Base
       friend.username
     end
   end
+
+  def total_pending_friends
+    total = pending_friends << pending_inverse_friends
+    total.flatten
+  end
+
+  def total_approved_friends
+    total = approved_friends << approved_inverse_friends
+    total.flatten
+  end
+
+
+
+
+  def approved_friends
+    approved_friendships.where(user_id: id)
+  end
+
+  def approved_inverse_friends
+    approved_inverse_friendships.where(friend_id: id)
+  end
+
+  def approved_friendships
+    friendships.where(status: "approved")
+  end
+
+  def approved_inverse_friendships
+    inverse_friendships.where(status: "approved")      
+  end
+
+  def pending_friends
+    pending_friendships.where(user_id: id)
+  end
+
+  def pending_inverse_friends
+    pending_inverse_friendships.where(friend_id: id)
+  end
+
+  def pending_friendships
+    friendships.where(status: "pending")
+  end
+
+  def pending_inverse_friendships
+    inverse_friendships.where(status: "pending")      
+  end
+
+
 
 end
