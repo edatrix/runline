@@ -21,9 +21,12 @@
           <% @user.friends.each do |friend| %>
             <tr> 
               <td><%= friend.username %>
-              <%= form_for @friendship, {:method => 'delete'} do |f| %>
-              <%=f.submit "Delete Friend" %>
-            <% end %>
+              <%= form_for @friendship, :method => :delete do |f| %>
+                <%= f.label :friend_name, "friend" %>
+                <%=f.hidden_field :friend_name, value: friend.username %>
+                
+                <%=f.submit "Remove Friend" %>
+              <%end%>
              </td>
             </tr>
             
