@@ -18,4 +18,15 @@ class User < ActiveRecord::Base
                                        )
   end
 
+  def total_friends
+    friends + inverse_friends
+  end
+
+  def add_friend(friend)
+    friend = User.find_by(username: friend)
+    Friendship.create(user_id: id, friend_id: friend.id)
+  end
+
+
+
 end

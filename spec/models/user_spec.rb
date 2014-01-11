@@ -2,6 +2,16 @@ require 'spec_helper'
 
 describe User do
 
+  before do
+    @user1 = FactoryGirl.create(:user, username: "user1")
+    @user2 = FactoryGirl.create(:user, username: "user2")
+    @user3 = FactoryGirl.create(:user, username: "user3")
+    @user4 = FactoryGirl.create(:user, username: "user4")
+    Friendship.create(user_id: 1, friend_id: 2)
+    Friendship.create(user_id: 1, friend_id: 3)
+    Friendship.create(user_id: 2, friend_id: 3)
+  end
+
   it { should validate_presence_of(:email) }
   it { should validate_presence_of(:username) }
   it { should validate_uniqueness_of(:username) }
@@ -11,15 +21,30 @@ describe User do
   it { should have_many(:inverse_friends) }
 
   it "should be created with valid attributes" do 
-    user = FactoryGirl.create(:user)
-    user.should be_valid
+    @user1.should be_valid
   end
 
   it "can have many runs" do 
-    user = FactoryGirl.create(:user)
-    run = FactoryGirl.create(:run, user_id: user.id)
-    second_run = FactoryGirl.create(:second_run, user_id: user.id)
-    expect(user.runs.size).to eq 2
+    run = FactoryGirl.create(:run, user_id: @user1.id)
+    second_run = FactoryGirl.create(:second_run, user_id: @user1.id)
+    expect(@user1.runs.size).to eq 2
   end
+
+  it "can count its friends" do
+    expect(@user1.friends.count).to eq(2)
+  end
+
+  it "counts total friends" do
+    expect(@user2.total_friends.count).to eq(2)
+  end
+
+  it "can add a friend" do
+    @user2.add_friend(@user2, @user4)
+    expect(@user2.total_friends.count).to eq(3)
+  end
+
+
+
+
 
 end

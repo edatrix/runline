@@ -4,7 +4,6 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rspec'
-require './integration_helper_spec.rb'
 
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -16,18 +15,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
-  config.include IntegrationSpecHelper, :type => :request
-
-
-  OmniAuth.config.mock_auth[:mapmyfitness] = {
-  'user_info' => {
-  'name' => 'Mario Brothers',
-  'image' => '',
-  'email' => 'dpsk@email.ru' },
-  'uid' => '123545',
-  'provider' => 'mapmyfitness',
-  'credentials' => {'token' => 'token'}
-}
+ 
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
