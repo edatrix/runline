@@ -22,7 +22,7 @@
             <tr> 
               <td><%= friend.username %>
               <%= form_for @friendship, :method => :delete do |f| %>
-                <%= f.label :friend_name, "friend" %>
+                
                 <%=f.hidden_field :friend_name, value: friend.username %>
                 
                 <%=f.submit "Remove Friend" %>
