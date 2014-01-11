@@ -1,7 +1,7 @@
 PATH
   remote: ../omniauth-mapmyfitness
   specs:
-    omniauth-mapmyfitness-oauth2 (0.1.0)
+    omniauth-mapmyfitness-oauth2 (0.2.0)
       json
       omniauth-oauth2
 
