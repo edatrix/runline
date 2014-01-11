@@ -19,14 +19,28 @@ class User < ActiveRecord::Base
   end
 
   def total_friends
-    friends + inverse_friends
+    friends << inverse_friends
   end
 
   def add_friend(friend)
-    friend = User.find_by(username: friend)
-    Friendship.create(user_id: id, friend_id: friend.id)
+    unless current_friends.include?(friend)
+      friend = User.find_by(username: friend)
+      Friendship.create(user_id: id, friend_id: friend.id)
+    end
   end
 
+  def unfriend(friend)
+    if current_friends.include?(friend)
+     friend = User.find_by(username: friend)
+     friendship = Friendship.find_by(user_id: id, friend_id: friend.id)
+     friendship.delete
+    end
+  end
 
+  def current_friends
+    friends.collect do |friend|
+      friend.username
+    end
+  end
 
 end

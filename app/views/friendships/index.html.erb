@@ -7,7 +7,7 @@
         <%= f.label :friend_name, "friend" %>
         <%=f.text_field :friend_name, placeholder: "username" %>
         <%=f.submit "Add Friend" %>
-    <%end%>
+      <%end%>
 
     </div>
     <div class="bs-docs-example">
@@ -20,14 +20,16 @@
         <tbody>
           <% @user.friends.each do |friend| %>
             <tr> 
-              <td><%= friend.username %> </td>
-            </tr>
+              <td><%= friend.username %>
+              <%= form_for @friendship, {:method => 'delete'} do |f| %>
+              <%=f.submit "Delete Friend" %>
             <% end %>
+             </td>
+            </tr>
+            
+          <% end %>
         </tbody>
       </table>
     </div>
-
-
-
   </body>
 </html>

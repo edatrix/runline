@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
     @current_user ||= lookup_user
   end
 
+
+
   private
 
   def lookup_user

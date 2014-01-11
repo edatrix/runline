@@ -10,6 +10,12 @@ class FriendshipsController < ApplicationController
     redirect_to :back
   end
 
+  def destroy
+    current_user.unfriend(friendship_params)
+    redirect_to :back
+
+  end
+
   private
 
   def friendship_params

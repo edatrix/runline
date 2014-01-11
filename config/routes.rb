@@ -9,6 +9,7 @@ Runline::Application.routes.draw do
 
   resources :users
   
-  resources :friendships
+  resources :friendships, only: [:index, :create, :delete]
     get "/friends" => "friendships#index"
+    delete "/friendships" => "friendships#destroy"
 end

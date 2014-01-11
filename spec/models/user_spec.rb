@@ -39,8 +39,13 @@ describe User do
   end
 
   it "can add a friend" do
-    @user2.add_friend(@user2, @user4)
-    expect(@user2.total_friends.count).to eq(3)
+    @user1.add_friend(@user4.username)
+    expect(@user1.total_friends.count).to eq(3)
+  end
+
+  it "can remove a friend" do
+    @user1.unfriend(@user2.username)
+    expect(@user1.friends.count).to eq(1)
   end
 
 
