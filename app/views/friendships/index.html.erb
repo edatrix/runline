@@ -18,7 +18,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @user.friends.each do |friend| %>
+          <% @user.total_approved_friends.each do |friend| %>
             <tr> 
               <td><%= friend.username %>
               <%= form_for @friendship, :method => :delete do |f| %>

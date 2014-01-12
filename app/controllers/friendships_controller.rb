@@ -6,9 +6,14 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    current_user.add_friend(friendship_params)
-    flash.notice = "Your request to #{friendship_params} has been sent!"
-    redirect_to :back
+    unless valid_users.include?(friendship_params)
+      flash.notice = "Could not find user: #{friendship_params}"
+      redirect_to :back
+    else
+      current_user.add_friend(friendship_params)
+      flash.notice = "Your request to #{friendship_params} has been sent!"
+      redirect_to :back
+    end
   end
 
   def destroy
