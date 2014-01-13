@@ -1,27 +1,28 @@
-    <% if @user.total_pending_friends.count > 0 %>
-      <table class="table table-bordered table-striped">
+<html>
+  <body>
+    <hr>
+    <h1><small> You have pending friends! </small></h1>
+      <div class="bs-docs-example">
+        <table class="table table-bordered table-striped">
           <thead>
             <tr>
-              <th>Name</tr>
+              <th>Name</th>
             </tr>
           </thead>
           <tbody>
-            <% @user.total_pending_friends.each do |friend| %>
-              <tr> 
-                <td><%= friend.username %>
-                <%= form_for @friendship, :method => "update" do |f| %>
-                  
-                  <%=f.hidden_field :friend_name, value: friend.username %>
-                  
-                  <%=f.submit "Approve Friend" %>
-                  <%end%>
-                </td>
-              </tr>
+            <% @user.pending_inverse_friends.each do |friend| %>
+            <tr> 
+              <td><%= friend.username %>
+                <%= form_for @friendship, :method => :put do |f| %>
+                <%=f.hidden_field :friend_name, value: friend.username %>
               
+                <%=f.submit "Approve Friend" %>
+                <%end%>
+              </td>
+            </tr>
             <% end %>
-
           </tbody>
         </table>
-      <% end %>
+      </div>
   </body>
 </html>

@@ -23,7 +23,6 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    fail
     current_user.approve_friend(friendship_params)
     redirect_to :back
   end

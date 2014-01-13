@@ -25,13 +25,14 @@ class User < ActiveRecord::Base
   def add_friend(friend)
     unless total_approved_friends.include?(friend)
       friend = User.find_by(username: friend)
-      Friendship.create(user_id: id, friend_id: friend.id, status: "pending")
+      create_or_update_friendship(friend.username)
     end
   end
 
   def approve_friend(friend)
     friend = User.find_by(username: friend)
-    friendship = Friendship.find_by(user_id: friend.id, friend_id: id)
+    friendship = Friendship.find_by(user_id: friend.id, friend_id: id) ||
+                 Friendship.find_by(user_id: id, friend_id: friend.id)
     friendship.update(status: "approved")
   end
 
@@ -47,6 +48,20 @@ class User < ActiveRecord::Base
       friendship = Friendship.find_by(user_id: id, friend_id: friend.id) ||
                    Friendship.find_by(user_id: friend.id, friend_id: id)
       friendship.update(status: "rejected")
+    else
+      fail
+    end
+  end
+
+  def create_or_update_friendship(friend)
+    friend = User.find_by(username: friend)
+    if Friendship.find_by(user_id: friend.id, friend_id: id) ||
+       Friendship.find_by(user_id: id, friend_id: friend.id)
+      friendship = Friendship.find_by(user_id: friend.id, friend_id: id) || 
+                  Friendship.find_by(user_id: id, friend_id: friend.id)
+      friendship.update(status: "pending")
+    else
+      Friendship.create(user_id: id, friend_id: friend.id, status: "pending")
     end
   end
 
