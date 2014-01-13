@@ -20,7 +20,7 @@ describe Friendship do
     expect(@user1.friends.count).to eq(2)
   end
 
-  it "assigns reverse friends to a user" do
+  it "assigns inverse friends to a user" do
     expect(@user2.inverse_friends.count).to eq(1)
   end
 

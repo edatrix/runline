@@ -24,26 +24,22 @@ class User < ActiveRecord::Base
 
   def add_friend(friend)
     unless total_approved_friends.include?(friend)
-      friend = User.find_by(username: friend)
-      create_or_update_friendship(friend.username)
+      create_or_update_friendship(friend)
     end
   end
 
   def approve_friend(friend)
-    friend = User.find_by(username: friend)
     friendship = Friendship.find_by(user_id: friend.id, friend_id: id) ||
                  Friendship.find_by(user_id: id, friend_id: friend.id)
     friendship.update(status: "approved")
   end
 
   def reject_friend(friend)
-    friend = User.find_by(username: friend)
     friendship = Friendship.find_by(user_id: friend.id, friend_id: id)
     friendship.update(status: "rejected")
   end
 
   def unfriend(friend)
-    friend = User.find_by(username: friend)
     if total_approved_friends.include?(friend)
       friendship = Friendship.find_by(user_id: id, friend_id: friend.id) ||
                    Friendship.find_by(user_id: friend.id, friend_id: id)
@@ -54,7 +50,6 @@ class User < ActiveRecord::Base
   end
 
   def create_or_update_friendship(friend)
-    friend = User.find_by(username: friend)
     if Friendship.find_by(user_id: friend.id, friend_id: id) ||
        Friendship.find_by(user_id: id, friend_id: friend.id)
       friendship = Friendship.find_by(user_id: friend.id, friend_id: id) || 
@@ -65,6 +60,8 @@ class User < ActiveRecord::Base
     end
   end
 
+
+
   def total_pending_friends
     total = pending_friends << pending_inverse_friends
     total.flatten
@@ -74,8 +71,6 @@ class User < ActiveRecord::Base
     total = approved_friends << approved_inverse_friends
     total.flatten
   end
-
-
 
   def approved_friends
     approved_friendships.where(user_id: id).collect do |friendship|

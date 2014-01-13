@@ -6,24 +6,22 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    unless valid_users.include?(friendship_params)
-      flash.notice = "Could not find user: #{friendship_params}"
-      redirect_to :back
-    else
-      current_user.add_friend(friendship_params)
+    if current_user.add_friend(friend)
       flash.notice = "Your request to #{friendship_params} has been sent!"
-      redirect_to :back
+    else
+       flash.notice = "Could not find user: #{friendship_params}"      
     end
+    redirect_to :back
   end
 
   def destroy
-    current_user.unfriend(friendship_params)
+    current_user.unfriend(friend)
     flash.notice = "Your friendship with #{friendship_params} has been terminated!"
     redirect_to :back
   end
 
   def update
-    current_user.approve_friend(friendship_params)
+    current_user.approve_friend(friend)
     redirect_to :back
   end
 
@@ -31,6 +29,10 @@ class FriendshipsController < ApplicationController
 
   def friendship_params
     params.require(:friendship).require(:friend_name)
+  end
+
+  def friend
+    User.find_by(username: friendship_params)
   end
 
 end

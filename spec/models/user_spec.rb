@@ -46,15 +46,15 @@ describe User do
   end
 
   it "can request a friend" do
-    @user1.add_friend(@user4.username)
-    @user1.add_friend(@user5.username)
+    @user1.add_friend(@user4)
+    @user1.add_friend(@user5)
     expect(@user1.total_pending_friends.count).to eq(3)
   end
 
   it "can remove a friend" do
     expect(@user1.total_approved_friends.count).to eq(3)
 
-    @user1.unfriend(@user2.username)
+    @user1.unfriend(@user2)
     expect(@user1.total_approved_friends.count).to eq(2)
   end
 
@@ -63,7 +63,7 @@ describe User do
   end
 
   it "can approve a friend" do
-    @user1.approve_friend(@user6.username)
+    @user1.approve_friend(@user6)
     expect(@user1.total_approved_friends.count).to eq(4)
   end
 
@@ -71,7 +71,7 @@ describe User do
     expect(@user1.total_pending_friends.count).to eq(1)
     expect(@user1.total_approved_friends.count).to eq(3)
 
-    @user1.reject_friend(@user6.username)
+    @user1.reject_friend(@user6)
     friendship = Friendship.find_by(user_id: @user6.id, friend_id: @user1.id)
     expect(@user1.total_approved_friends.count).to eq(3)
     expect(friendship.status).to eq("rejected")
@@ -80,14 +80,17 @@ describe User do
 
   it "does not create a new friendship if one already exists" do
     expect(Friendship.last.id).to eq(6)
-    @user1.unfriend(@user2.username)
+    @user1.unfriend(@user2)
     expect(Friendship.last.id).to eq(6)
-    @user2.add_friend(@user1.username)
+    @user2.add_friend(@user1)
     expect(Friendship.last.id).to eq(6)
-    @user1.approve_friend(@user2.username)
+    @user1.approve_friend(@user2)
     expect(Friendship.last.id).to eq(6)
+  end
 
-
+  it "queries its friends" do
+    expect(@user1.total_friends).to include(@user2)
+    expect(@user2.total_friends).to include(@user1)
 
   end
 
