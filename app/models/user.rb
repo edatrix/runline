@@ -30,16 +30,19 @@ class User < ActiveRecord::Base
   end
 
   def approve_friend(friend)
+    friend = User.find_by(username: friend)
     friendship = Friendship.find_by(user_id: friend.id, friend_id: id)
     friendship.update(status: "approved")
   end
 
   def reject_friend(friend)
+    friend = User.find_by(username: friend)
     friendship = Friendship.find_by(user_id: friend.id, friend_id: id)
     friendship.update(status: "rejected")
   end
 
   def unfriend(friend)
+    friend = User.find_by(username: friend)
     if total_approved_friends.include?(friend)
       friendship = Friendship.find_by(user_id: id, friend_id: friend.id) ||
                    Friendship.find_by(user_id: friend.id, friend_id: id)

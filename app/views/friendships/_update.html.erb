@@ -1,0 +1,27 @@
+    <% if @user.total_pending_friends.count > 0 %>
+      <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Name</tr>
+            </tr>
+          </thead>
+          <tbody>
+            <% @user.total_pending_friends.each do |friend| %>
+              <tr> 
+                <td><%= friend.username %>
+                <%= form_for @friendship, :method => "update" do |f| %>
+                  
+                  <%=f.hidden_field :friend_name, value: friend.username %>
+                  
+                  <%=f.submit "Approve Friend" %>
+                  <%end%>
+                </td>
+              </tr>
+              
+            <% end %>
+
+          </tbody>
+        </table>
+      <% end %>
+  </body>
+</html>

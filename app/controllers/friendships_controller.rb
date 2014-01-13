@@ -20,7 +20,12 @@ class FriendshipsController < ApplicationController
     current_user.unfriend(friendship_params)
     flash.notice = "Your friendship with #{friendship_params} has been terminated!"
     redirect_to :back
+  end
 
+  def update
+    fail
+    current_user.approve_friend(friendship_params)
+    redirect_to :back
   end
 
   private

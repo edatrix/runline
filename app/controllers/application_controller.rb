@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
     User.all.collect {|user| user.username}
   end
 
-
   private
 
   def lookup_user

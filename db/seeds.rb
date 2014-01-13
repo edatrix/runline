@@ -43,9 +43,9 @@ class Seeder
 
   def generate_friends
 
-    Friendship.create(user_id: 1, friend_id: 2)
-    Friendship.create(user_id: 1, friend_id: 3)
-    Friendship.create(user_id: 2, friend_id: 3)
+    Friendship.create(user_id: 1, friend_id: 2, status: "approved")
+    Friendship.create(user_id: 1, friend_id: 3, status: "pending")
+    Friendship.create(user_id: 2, friend_id: 3, status: "approved")
   end
 end
 

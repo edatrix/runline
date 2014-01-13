@@ -1,15 +1,16 @@
 <html>
   <body>
-    <div class="page-header">
-      <h1><small>Your friends</small></h1>
-
-      <%= form_for @friendship do |f| %>
-        <%= f.label :friend_name, "friend" %>
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="/friends">My Friends</a></li>
+      <li><a href="#">Compare</a></li>
+      <li><a href="/requests">Requests</a></li>
+    </ul>
+    <hr>
+    <%= form_for @friendship do |f| %>
         <%=f.text_field :friend_name, placeholder: "username" %>
         <%=f.submit "Send Friend Request" %>
       <%end%>
-
-    </div>
+    <h1><small>Your friends</small></h1>
     <div class="bs-docs-example">
       <table class="table table-bordered table-striped">
         <thead>
@@ -34,5 +35,8 @@
         </tbody>
       </table>
     </div>
+    <% if @user.total_pending_friends.count > 0 %>
+    <%= render "update" %>
+    <% end %>
   </body>
 </html>

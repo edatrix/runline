@@ -9,7 +9,9 @@ Runline::Application.routes.draw do
 
   resources :users
   
-  resources :friendships, only: [:index, :create, :delete]
-    get "/friends" => "friendships#index"
+  resources :friendships, only: [:index, :create, :delete, :update]
+    get "/friendships" => "friendships#index"
     delete "/friendships" => "friendships#destroy"
+    put "/friendships" => "friendships#update"
+
 end
