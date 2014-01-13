@@ -54,7 +54,7 @@ describe User do
   it "can remove a friend" do
     expect(@user1.total_approved_friends.count).to eq(3)
 
-    @user1.unfriend(@user2)
+    @user1.unfriend(@user2.username)
     expect(@user1.total_approved_friends.count).to eq(2)
   end
 
@@ -63,7 +63,7 @@ describe User do
   end
 
   it "can approve a friend" do
-    @user1.approve_friend(@user6)
+    @user1.approve_friend(@user6.username)
     expect(@user1.total_approved_friends.count).to eq(4)
   end
 
@@ -71,7 +71,7 @@ describe User do
     expect(@user1.total_pending_friends.count).to eq(1)
     expect(@user1.total_approved_friends.count).to eq(3)
 
-    @user1.reject_friend(@user6)
+    @user1.reject_friend(@user6.username)
     friendship = Friendship.find_by(user_id: @user6.id, friend_id: @user1.id)
     expect(@user1.total_approved_friends.count).to eq(3)
     expect(friendship.status).to eq("rejected")
