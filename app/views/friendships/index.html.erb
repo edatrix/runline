@@ -3,9 +3,10 @@
     <ul class="nav nav-tabs">
       <li class="active"><a href="/friendships">My Friends</a></li>
       <li><a href="#">Compare</a></li>
+      <li><%= link_to "Friend Requests", requests_friendships_path %></li>
     </ul>
     <hr>
-    <%= form_for @friendship do |f| %>
+    <%= form_for current_user.friendships.new do |f| %>
         <%=f.text_field :friend_name, placeholder: "username" %>
         <%=f.submit "Send Friend Request" %>
       <%end%>
@@ -18,21 +19,21 @@
           </tr>
         </thead>
         <tbody>
-          <% @user.total_approved_friends.each do |friend| %>
-            <tr> 
-              <td><%= friend.username %>
-                <%= form_for @friendship, :method => :delete do |f| %> 
-                  <%=f.hidden_field :friend_name, value: friend.username %>  
-                  <%=f.submit "Remove Friend" %>
-                <%end%>
+          <% current_user.total_approved_friendships.each do |friendship| %>
+            <tr>
+            <% if friendship.user_id == current_user.id %> 
+              <td>
+              <%= friendship.friend.username %>
+            <% else %>
+              <td>
+              <%= friendship.user.username %>
+            <% end %>
+                <%= button_to "Remove Friend", remove_friendship_path(friendship), :method => :delete %>
               </td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-    <% if @user.pending_inverse_friends.count > 0 %>
-            <%= render "update" %>
-          <% end %>
   </body>
 </html>

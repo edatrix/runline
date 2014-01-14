@@ -39,16 +39,6 @@ class User < ActiveRecord::Base
     friendship.update(status: "rejected")
   end
 
-  def unfriend(friend)
-    if total_approved_friends.include?(friend)
-      friendship = Friendship.find_by(user_id: id, friend_id: friend.id) ||
-                   Friendship.find_by(user_id: friend.id, friend_id: id)
-      friendship.update(status: "rejected")
-    else
-      fail
-    end
-  end
-
   def create_or_update_friendship(friend)
     if Friendship.find_by(user_id: friend.id, friend_id: id) ||
        Friendship.find_by(user_id: id, friend_id: friend.id)
@@ -82,6 +72,11 @@ class User < ActiveRecord::Base
     approved_inverse_friendships.where(friend_id: id).collect do |friendship|
       friendship.user
     end
+  end
+
+  def total_approved_friendships
+    total = approved_friendships << approved_inverse_friendships
+    total.flatten
   end
 
   def approved_friendships

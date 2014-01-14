@@ -1,0 +1,30 @@
+<html>
+  <body>
+    <ul class="nav nav-tabs">
+      <li><a href="/friendships">My Friends</a></li>
+      <li><a href="#">Compare</a></li>
+      <li class ="active"><a href="/requests">Friend Requests</a></li>
+    </ul>
+    <hr>
+    <h1><small> You have pending friends! </small></h1>
+      <div class="bs-docs-example">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% current_user.pending_inverse_friendships.each do |friendship| %>
+            <tr> 
+              <td>
+                <%= friendship.user.username %>
+                <%= button_to "Approve", approve_friendship_path(friendship), :method => :put %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+  </body>
+</html>
