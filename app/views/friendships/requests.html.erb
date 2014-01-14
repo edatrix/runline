@@ -20,6 +20,7 @@
               <td>
                 <%= friendship.user.username %>
                 <%= button_to "Approve", approve_friendship_path(friendship), :method => :put %>
+                 <%= button_to "Reject", remove_friendship_path(friendship), :method => :delete %>
               </td>
             </tr>
             <% end %>

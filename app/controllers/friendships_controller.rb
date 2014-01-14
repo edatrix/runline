@@ -14,15 +14,6 @@ class FriendshipsController < ApplicationController
     redirect_to :back
   end
 
-  # def destroy
-  #   if Friendship.cancel_between(current_user, friend)
-  #     flash.notice = "Your friendship with #{friendship_params} has been terminated!"
-  #   else
-  #     flash.notice = "Sorry, friendship with #{friend.username} not found for #{current_user.username}"
-  #   end
-  #   redirect_to :back
-  # end
-
   def update
     current_user.approve_friend(friend)
     redirect_to :back

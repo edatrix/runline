@@ -6,13 +6,6 @@ class Friendship < ActiveRecord::Base
   validates :user_id, presence: true
   validates :friend_id, presence: true
 
-  def self.cancel_between(user1, user2)
-    friendships = where(:user_id => user1.id, :friend_id => user2.id) +
-                  where(:user_id => user2.id, :friend_id => user1.id)
-    friendships.each{ |f| f.update_attributes(:status => "rejected") }
-    friendships.any?
-  end
-
   def self.approve(id)
     Friendship.find(id).approve
   end
