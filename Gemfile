@@ -7,6 +7,8 @@ gem 'faraday'
 gem 'faker'
 gem 'bootstrap-sass'
 gem 'pry'
+gem 'resque'
+gem 'resque_mailer'
 
 
 # Use postgresql as the database for Active Record
