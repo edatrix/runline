@@ -51,13 +51,6 @@ describe User do
     expect(@user1.total_pending_friends.count).to eq(3)
   end
 
-  it "can remove a friend" do
-    expect(@user1.total_approved_friends.count).to eq(3)
-
-    @user1.unfriend(@user2)
-    expect(@user1.total_approved_friends.count).to eq(2)
-  end
-
   it "can count approved friends" do
     expect(@user1.total_approved_friends.count).to eq(3)
   end
@@ -76,16 +69,6 @@ describe User do
     expect(@user1.total_approved_friends.count).to eq(3)
     expect(friendship.status).to eq("rejected")
     expect(@user1.total_pending_friends.count).to eq(0)
-  end
-
-  it "does not create a new friendship if one already exists" do
-    expect(Friendship.last.id).to eq(6)
-    @user1.unfriend(@user2)
-    expect(Friendship.last.id).to eq(6)
-    @user2.add_friend(@user1)
-    expect(Friendship.last.id).to eq(6)
-    @user1.approve_friend(@user2)
-    expect(Friendship.last.id).to eq(6)
   end
 
   it "queries its friends" do
