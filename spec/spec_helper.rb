@@ -66,3 +66,10 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 end
+OmniAuth.config.test_mode = true
+OmniAuth.config.mock_auth[:mapmyfitness] = OmniAuth::AuthHash.new({
+  :provider => 'mapmyfitness',
+  :uid => '123545',
+  :info => {:first_name => "Jane", :email => "jane@example.com"},
+  :credentials => {}
+})

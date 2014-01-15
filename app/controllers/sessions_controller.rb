@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_or_create_by_auth(request.env["omniauth.auth"])
     session[:user_id] = @user.id
-    @user.save!    
+    @user.save!
     redirect_to dashboard_path, notice: "You are logged in!"
   end
 
