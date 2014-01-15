@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :friendships
   has_many :friends, :through => :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
-  has_many :inverse_friends, :through => :inverse_friendships, :source => :user 
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
   def self.find_or_create_by_auth(auth)
     find_or_create_by_provider_and_uid(auth["provider"],
@@ -42,15 +42,18 @@ class User < ActiveRecord::Base
   def create_or_update_friendship(friend)
     if Friendship.find_by(user_id: friend.id, friend_id: id) ||
        Friendship.find_by(user_id: id, friend_id: friend.id)
-      friendship = Friendship.find_by(user_id: friend.id, friend_id: id) || 
+      friendship = Friendship.find_by(user_id: friend.id, friend_id: id) ||
                   Friendship.find_by(user_id: id, friend_id: friend.id)
       friendship.update(status: "pending")
     else
       Friendship.create(user_id: id, friend_id: friend.id, status: "pending")
+      send_friend_request_email(friend.email, self.username)
     end
   end
 
-
+  def send_friend_request_email(email, username)
+    FriendRequestNotifier.email_friend(email, username).deliver
+  end
 
   def total_pending_friends
     total = pending_friends << pending_inverse_friends
@@ -65,7 +68,7 @@ class User < ActiveRecord::Base
   def approved_friends
     approved_friendships.where(user_id: id).collect do |friendship|
       friendship.friend
-    end 
+    end
   end
 
   def approved_inverse_friends
@@ -84,13 +87,13 @@ class User < ActiveRecord::Base
   end
 
   def approved_inverse_friendships
-    inverse_friendships.where(status: "approved")      
+    inverse_friendships.where(status: "approved")
   end
 
   def pending_friends
     pending_friendships.where(user_id: id).collect do |friendship|
       friendship.friend
-    end 
+    end
   end
 
   def pending_inverse_friends
@@ -104,7 +107,7 @@ class User < ActiveRecord::Base
   end
 
   def pending_inverse_friendships
-    inverse_friendships.where(status: "pending")      
+    inverse_friendships.where(status: "pending")
   end
 
 end
