@@ -6,6 +6,7 @@ Runline::Application.routes.draw do
   match "/logout", to: "sessions#destroy", via: :get
 
   match "/dashboard", to: "dashboards#show", via: :get
+  match "/compare/:id", to: "compare#show", via: :get, as: :compare
 
   resources :users
   
