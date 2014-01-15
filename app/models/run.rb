@@ -8,7 +8,7 @@ class Run < ActiveRecord::Base
 
   def miles
     result = self.distance / 1609.34
-    result.to_s[0..-15]
+    result.round(2)
   end
 
   def time_in_minutes

@@ -28,9 +28,9 @@ describe Run do
 
   it "converts the distance of a run into miles" do
     run = FactoryGirl.create(:run)
-    expect(run.miles).to eq("3.1")
+    expect(run.miles).to eq(3.11)
     run2 = FactoryGirl.create(:second_run)
-    expect(run2.miles).to eq("6.2")
+    expect(run2.miles).to eq(6.21)
   end
 
   it "converts the run time to minutes and seconds" do 
@@ -44,6 +44,8 @@ describe Run do
   end
 
   xit "finds the longest run from a user's runs in the last 14 days" do
+    run = Run.create(user_id: 1, distance: 1609.34, run_time: 43, workout_datetime: "Monday")
+    expect(@user1.longest_run_in_last_14_days).to eq(1.0)
   end
 
   xit "finds the average pace of all the runs for the last 14 days" do
