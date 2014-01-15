@@ -21,8 +21,6 @@ Runline::Application.routes.draw do
       delete :remove
     end
   end
-  get "/friendships" => "friendships#index"
   delete "/friendships" => "friendships#destroy"
-  put "/friendships" => "friendships#update"
 
 end
