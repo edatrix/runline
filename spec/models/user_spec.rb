@@ -56,17 +56,6 @@ describe User do
     expect(@user1.total_approved_friends.count).to eq(4)
   end
 
-  it "can reject a friend request" do
-    expect(@user1.total_pending_friends.count).to eq(1)
-    expect(@user1.total_approved_friends.count).to eq(3)
-
-    @user1.reject_friend(@user6)
-    friendship = Friendship.find_by(user_id: @user6.id, friend_id: @user1.id)
-    expect(@user1.total_approved_friends.count).to eq(3)
-    expect(friendship.status).to eq("rejected")
-    expect(@user1.total_pending_friends.count).to eq(0)
-  end
-
   it "queries its approved friends" do
     expect(@user1.total_approved_friends).to include(@user2)
     expect(@user2.total_approved_friends).to include(@user1)

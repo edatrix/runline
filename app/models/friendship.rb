@@ -7,20 +7,16 @@ class Friendship < ActiveRecord::Base
   validates :friend_id, presence: true
   validates :status, presence: true
 
-  def self.approve(id)
-    Friendship.find(id).approve
-  end
-
   def approve
-    update_attributes(:status => "approved")
-  end
-
-  def self.remove(id)
-    Friendship.find(id).remove
+    self.update_attributes(:status => "approved")
   end
 
   def remove
-    update_attributes(:status => "rejected")
+    self.destroy
+  end
+
+  def reject
+    self.destroy
   end
 
 end

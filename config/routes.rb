@@ -19,6 +19,7 @@ Runline::Application.routes.draw do
     member do
       put :approve
       delete :remove
+      delete :reject
     end
   end
   delete "/friendships" => "friendships#destroy"

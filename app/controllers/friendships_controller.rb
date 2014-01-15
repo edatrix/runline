@@ -14,23 +14,25 @@ class FriendshipsController < ApplicationController
     redirect_to :back
   end
 
-  def update
-    current_user.approve_friend(friend)
-    redirect_to :back
-  end
-
   def approve
-    #current_user.approve_friend(friend)
-    Friendship.approve(params[:id])
+    friendship = current_user.total_pending_friendships.find(params[:id]).first
+    friendship.approve
+    flash.notice = "Congrats on having a new friend! You're on your way to being a running social butterfly!"
     redirect_to :back
   end
 
   def remove
-    Friendship.remove(params[:id])
-    flash.notice = "Your friendship has been terminated!"
-
+    friendship = current_user.total_approved_friendships.find(params[:id]).first
+    friendship.remove
+    flash.notice = "You just showed them who the boss was!"
     redirect_to :back
+  end
 
+  def reject
+    friendship = current_user.total_pending_friendships.find(params[:id]).first
+    friendship.reject
+    flash.notice = "REJECTED!!!"
+    redirect_to :back
   end
 
   private
