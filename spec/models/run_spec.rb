@@ -42,4 +42,13 @@ describe Run do
     run = FactoryGirl.create(:run)
     expect(run.pace).to eq("5:03")
   end
+
+  xit "finds the longest run from a user's runs in the last 14 days" do
+  end
+
+  xit "finds the average pace of all the runs for the last 14 days" do
+  end
+
+  xit "finds the total mileage run for the last 14 days" do
+  end
 end
