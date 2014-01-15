@@ -21,4 +21,55 @@
   </div>
 </div>
 
+<h1>Your Run Logs</h1>
+
+<div class="bs-docs-example">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Run</th>
+        <th>Distance</th>
+        <th>Run Time</th>
+        <th>Workout Datetime</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @my_runs.each do |run| %>
+      <tr>
+        <td><%= run.name %></td>
+        <td><%= run.miles %></td>
+        <td><%= run.time_in_minutes %></td>
+        <td><%= run.workout_datetime %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<h1><%= @friend.username %>'s Run Logs</h1>
+
+<div class="bs-docs-example">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Run</th>
+        <th>Distance</th>
+        <th>Run Time</th>
+        <th>Workout Datetime</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @friend_runs.each do |run| %>
+      <tr>
+        <td><%= run.name %></td>
+        <td><%= run.miles %></td>
+        <td><%= run.time_in_minutes %></td>
+        <td><%= run.workout_datetime %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
 
