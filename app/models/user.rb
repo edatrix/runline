@@ -18,10 +18,6 @@ class User < ActiveRecord::Base
                                        )
   end
 
-  def total_friends
-    friends << inverse_friends
-  end
-
   def add_friend(friend)
     unless total_approved_friends.include?(friend)
       create_or_update_friendship(friend)

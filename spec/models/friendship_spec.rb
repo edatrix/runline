@@ -13,6 +13,7 @@ describe Friendship do
 
   it { should validate_presence_of(:user_id) }
   it { should validate_presence_of(:friend_id) }
+  it { should validate_presence_of(:status) }
   it { should belong_to(:user) }
   it { should belong_to(:friend) }
 
@@ -22,10 +23,6 @@ describe Friendship do
 
   it "assigns inverse friends to a user" do
     expect(@user2.inverse_friends.count).to eq(1)
-  end
-
-  it "total friends counts friends and friendships" do
-    expect(@user2.total_friends.count).to eq(2)
   end
 
   it "can remove a friend" do

@@ -41,10 +41,6 @@ describe User do
     expect(@user1.friends.count).to eq(2)
   end 
 
-  it "counts total friends" do
-    expect(@user2.total_friends.count).to eq(2)
-  end
-
   it "can request a friend" do
     @user1.add_friend(@user4)
     @user1.add_friend(@user5)
@@ -71,10 +67,9 @@ describe User do
     expect(@user1.total_pending_friends.count).to eq(0)
   end
 
-  it "queries its friends" do
-    expect(@user1.total_friends).to include(@user2)
-    expect(@user2.total_friends).to include(@user1)
-
+  it "queries its approved friends" do
+    expect(@user1.total_approved_friends).to include(@user2)
+    expect(@user2.total_approved_friends).to include(@user1)
   end
 
 end
