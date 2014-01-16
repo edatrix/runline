@@ -15,9 +15,9 @@ class Run < ActiveRecord::Base
   # 3. mile pace in minutes, seconds (6:35) check
 
   # FOR ALL A USERS RUNS:
-  # 1. total distance in miles over last 14 days
-  # 2. average mile pace for all runs over last 14 days
-  # 3. mile pace for fastest run in last 14 days
+  # 1. total distance in miles over last 14 days check
+  # 2. average mile pace for all runs over last 14 days check
+  # 3. mile pace for fastest run in last 14 days 
   # 4. longest run in miles in last 14 days
 
 
@@ -47,9 +47,10 @@ class Run < ActiveRecord::Base
     end
   end
 
-  def self.longest_run_for(id)
-    all_runs_for(id).order(:distance).last
-  end
+
+  # def self.longest_run_for(id)
+  #   all_runs_for(id).order(:distance).last
+  # end
 
   # def self.average_mile_pace_for(id)
   #   run_count = all_runs_for(id).count

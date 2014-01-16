@@ -49,6 +49,31 @@ describe Run do
     expect(run3.mile_pace_in_minutes).to eq("11:23")
   end
 
+  it "finds the total distance in miles for all a user's runs" do 
+    run = FactoryGirl.create(:run)
+    run2 = FactoryGirl.create(:second_run)
+    expect(@user1.runs.count).to eq(2)
+    expect(@user1.total_distance_in_miles).to eq(9.32)
+  end
+
+  it "finds the average mile pace for all a user's runs" do 
+    run = FactoryGirl.create(:run)
+    run2 = FactoryGirl.create(:second_run)
+    expect(@user1.total_average_mile_pace).to eq("5:15")
+  end
+
+  it "finds a user's fastest run" do 
+    run = FactoryGirl.create(:run)
+    run2 = FactoryGirl.create(:second_run)
+    expect(@user1.fastest_run.run_time).to eq(run.run_time)
+  end
+
+  # it "finds the fastest mile pace for all a user's runs" do 
+  #   run = FactoryGirl.create(:run)
+  #   run2 = FactoryGirl.create(:second_run)
+  #   expect(@user1.mile_pace_of_fastest_run).to eq("5:15")
+  # end
+
   xit "finds the longest run from a user's runs" do
     run1 = Run.create(user_id: 1, distance: 1609.34, run_time: 43, workout_datetime: "Monday")
     run2 = Run.create(user_id: 1, distance: 1123.34, run_time: 12, workout_datetime: "Monday")

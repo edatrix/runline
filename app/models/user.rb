@@ -30,11 +30,6 @@ class User < ActiveRecord::Base
     friendship.update(status: "approved")
   end
 
-  # def reject_friend(friend)
-  #   friendship = Friendship.find_by(user_id: friend.id, friend_id: id)
-  #   friendship.update(status: "rejected")
-  # end
-
   def create_or_update_friendship(friend)
     if Friendship.find_by(user_id: friend.id, friend_id: id) ||
        Friendship.find_by(user_id: id, friend_id: friend.id)
@@ -49,6 +44,48 @@ class User < ActiveRecord::Base
 
   def send_friend_request_email(email, username)
     FriendRequestNotifier.email_friend(email, username).deliver
+  end
+
+  def total_average_mile_pace
+    total_seconds = 0
+    runs.each do |run|
+      total_seconds += run.run_time
+    end
+    total_distance = 0
+    runs.each do |run|
+      total_distance += run.miles
+    end
+    format_seconds_for_views(total_seconds / total_distance_in_miles)
+  end
+
+  def total_distance_in_miles
+    distance = 0
+    runs.each do |run|
+      distance += run.miles
+    end
+    distance
+  end
+
+  # def fastest_run
+  #   runs.each do |run|
+  #     run_pace = (run.run_time / run.distance)
+  #   end
+  #   runs.order(run_pace).first
+  # end
+
+  private
+
+  def format_seconds_for_views(total_seconds)
+    hours = (total_seconds / 3600).to_i
+    minutes = ((total_seconds / 60) % 60).to_i.to_s
+    seconds = (total_seconds % 60).round.to_s
+    seconds = "0" + seconds if seconds.length == 1
+    if hours >= 1
+      minutes = "0" + minutes if minutes.length == 1
+      "#{hours}:#{minutes}:#{seconds}"
+    else
+      "#{minutes}:#{seconds}"
+    end
   end
 
   def total_pending_friends
