@@ -13,6 +13,7 @@ describe Friendship do
 
   it { should validate_presence_of(:user_id) }
   it { should validate_presence_of(:friend_id) }
+  it { should validate_presence_of(:status) }
   it { should belong_to(:user) }
   it { should belong_to(:friend) }
 
@@ -24,24 +25,27 @@ describe Friendship do
     expect(@user2.inverse_friends.count).to eq(1)
   end
 
-  it "total friends counts friends and friendships" do
-    expect(@user2.total_friends.count).to eq(2)
-  end
-
   it "can remove a friend" do
     expect(@user1.total_approved_friends.count).to eq(2)
     friendship = Friendship.find_by(user_id: @user1.id, friend_id: @user2.id)
+    expect(Friendship.count).to eq(3)
     friendship.remove
-    expect(friendship.status).to eq("rejected")
+    expect(Friendship.count).to eq(2)
     expect(@user1.total_approved_friends.count).to eq(1)
+  end
+
+  xit "can approve a friend" do 
+
+  end
+
+  xit "can reject a friend" do 
+
   end
 
   context "changing friendship status" do
     it "does not create a new friendship id when one already exists" do
       expect(Friendship.last.id).to eq(3)
       friendship = Friendship.find_by(user_id: @user1.id, friend_id: @user2.id)
-      friendship.remove
-      expect(Friendship.last.id).to eq(3)
       friendship.approve
       expect(Friendship.last.id).to eq(3)
     end
