@@ -5,10 +5,10 @@ gem 'rails', '4.0.1'
 gem 'omniauth-mapmyfitness'
 gem 'faraday'
 gem 'faker'
-gem 'bootstrap-sass'
 gem 'pry'
 gem 'resque'
 gem 'resque_mailer'
+gem 'haml-rails'
 
 
 # Use postgresql as the database for Active Record
@@ -32,19 +32,15 @@ group :production do
   gem 'rails_12factor'
 end
 
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+group :assets do
+  gem 'bourbon'
+  gem 'sass-rails'
+  gem 'normalize-rails'
+  gem 'coffee-rails'
+  gem 'underscore-rails'
+  gem 'uglifier'
+end
 
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
 gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -58,14 +54,3 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
