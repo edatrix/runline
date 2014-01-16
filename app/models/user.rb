@@ -82,7 +82,10 @@ class User < ActiveRecord::Base
     fastest_run.mile_pace_in_minutes
   end
 
-  private
+  def longest_run
+    runs_by_distance = runs.sort! { |run| run.distance }
+    runs_by_distance.first
+  end
 
   def format_seconds_for_views(total_seconds)
     hours = (total_seconds / 3600).to_i
