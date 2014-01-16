@@ -1,0 +1,51 @@
+= link_to "Back to Friends", friendships_path
+%h1 How do you stack up against #{@friend.username}
+%table
+  %thead
+    %tr
+      %th Total miles in past 14 days
+      %th Fastest pace
+      %th Miles run during last activity
+      %tbody
+        %tr
+          %td 10.2 mi
+          %td 5 mph
+          %td 17 January 2014
+%h1 Your Run Logs
+%table
+  %thead
+    %tr
+      %th Run
+      %th Distance
+      %th Run Time
+      %th Workout Datetime
+      %tbody
+      - @my_runs.each do |run|
+        %tr
+          %td
+            = run.name
+          %td
+            = run.miles
+          %td
+            = run.time_in_minutes
+          %td  
+            = run.workout_datetime
+%h1 #{@friend.username}'s run log
+%table
+  %thead
+    %tr
+      %th Run
+      %th Distance
+      %th Run Time
+      %th Workout Datetime
+      %tbody
+      - @friend_runs.each do |run|
+        %tr
+          %td
+            = run.name
+          %td
+            = run.miles
+          %td
+            = run.time_in_minutes
+          %td  
+            = run.workout_datetime
