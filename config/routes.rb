@@ -1,11 +1,27 @@
 Runline::Application.routes.draw do
   root "home_page#index"
 
-  match "/login" => redirect("/auth/mapmyfitness"), as: :login, via: :get
-  match "/auth/:provider/callback", to: "sessions#create", via: :get
-  match "/logout", to: "sessions#destroy", via: :get
+  get "/login" => redirect("/auth/mapmyfitness"), as: :login
+  get "/auth/:provider/callback", to: "sessions#create"
+  get "/logout", to: "sessions#destroy"
 
-  match "/dashboard", to: "dashboards#index", via: :get
+  get "/dashboard", to: "dashboards#show"
+  get "/compare/:id", to: "compare#show", as: :compare
+  get "/profile", to: "profile#show"
 
   resources :users
+  
+  resources :friendships, only: [:index, :create, :delete, :update] do
+    collection do
+      get :requests
+    end
+
+    member do
+      put :approve
+      delete :remove
+      delete :reject
+    end
+  end
+  delete "/friendships" => "friendships#destroy"
+
 end

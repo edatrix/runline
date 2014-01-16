@@ -7,9 +7,15 @@
 # Ignore bundler config.
 /.bundle
 
+#Ignore Gemfile.lock
+Gemfile.lock
+
 # Ignore silly files
 /public/assets/*.*
 /coverage
+
+runline_test
+runline_development
 
 # Ignore all logfiles and tempfiles.
 /log/*.log

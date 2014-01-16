@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Runline</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
 
-<%= flash.notice %>
+    <title>Runline</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-<%= yield %>
+  <body>
+    <%= yield %>
+    <%= flash.notice %>
+  </body>
 
-</body>
+   <footer>
+    <div class="container">
+      <p>Runline. A social fitness tracking service built by gSchool class[1]</p>
+      <p>Billy Griffin, Luke Martinez, Lauren Spath Luhring, &amp; Bree Thomas</p>
+    </div>
+  </footer>
+
 </html>

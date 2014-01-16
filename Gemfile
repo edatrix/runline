@@ -3,8 +3,14 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 gem 'rspec-rails'
-gem 'omniauth-mapmyfitness-oauth2', :path => "../omniauth-mapmyfitness"
-gem 'mapmyfitness', :path => "../mapmyfitness"
+gem 'omniauth-mapmyfitness-oauth2', :github => "jcasimir/omniauth-mapmyfitness-oauth2"
+gem 'mapmyfitness', :github => "jcasimir/mapmyfitness"
+gem 'faraday'
+gem 'faker'
+gem 'bootstrap-sass'
+gem 'pry'
+gem 'resque'
+gem 'resque_mailer'
 
 # Use postgresql as the database for Active Record
 group :development, :test do
@@ -25,6 +31,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end
 
 # Use SCSS for stylesheets

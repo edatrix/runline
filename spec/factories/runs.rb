@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :run do
     name "Yesterday's Run"
     distance 5000
-    run_time 900
+    run_time 940
     workout_datetime  { 1.day.ago }
     user_id 1
   end

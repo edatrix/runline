@@ -1,0 +1,40 @@
+<html>
+  <body>
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="/friendships">My Friends</a></li>
+      <li><%= link_to "Friend Requests", requests_friendships_path %></li>
+    </ul>
+    <hr>
+    <%= form_for current_user.friendships.new do |f| %>
+        <%=f.text_field :friend_name, placeholder: "username" %>
+        <%=f.submit "Send Friend Request" %>
+      <%end%>
+    <h1><small>Your friends</small></h1>
+    <div class="bs-docs-example">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% current_user.total_approved_friendships.each do |friendship| %>
+            <tr>
+            <% if friendship.user_id == current_user.id %> 
+              <td>
+              <%= friendship.friend.username %>
+              <%= button_to "Compare", compare_path(friendship.friend.id), :method => :get %>
+            <% else %>
+              <td>
+              <%= friendship.user.username %>
+              <%= button_to "Compare", compare_path(friendship.user.id), :method => :get %>
+            <% end %>
+              <%= button_to "Remove Friend", remove_friendship_path(friendship), :method => :delete %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

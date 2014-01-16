@@ -1,0 +1,76 @@
+<%= link_to "Back to Friends", friendships_path %>
+<h1>How do you stack up against <%= @friend.username %>?</h1>
+
+<div class="container">  
+  <div class="jumbotron">
+    <table class="jumbotron table">
+      <thead>
+        <tr>
+          <th>Total miles in past 14 days</th>
+          <th>Fastest pace</th>
+          <th>Miles run during last activity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>10.2 mi</td>
+          <td>4 mph</td>
+          <td>17 January 2014</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h1>Your Run Logs</h1>
+
+<div class="bs-docs-example">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Run</th>
+        <th>Distance</th>
+        <th>Run Time</th>
+        <th>Workout Datetime</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @my_runs.each do |run| %>
+      <tr>
+        <td><%= run.name %></td>
+        <td><%= run.miles %></td>
+        <td><%= run.time_in_minutes %></td>
+        <td><%= run.workout_datetime %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<h1><%= @friend.username %>'s Run Logs</h1>
+
+<div class="bs-docs-example">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Run</th>
+        <th>Distance</th>
+        <th>Run Time</th>
+        <th>Workout Datetime</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @friend_runs.each do |run| %>
+      <tr>
+        <td><%= run.name %></td>
+        <td><%= run.miles %></td>
+        <td><%= run.time_in_minutes %></td>
+        <td><%= run.workout_datetime %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+
