@@ -27,12 +27,25 @@ class Run < ActiveRecord::Base
   end
 
   def time_in_minutes
-    Time.at(self.run_time).utc.strftime("%H:%M:%S")
+    format_seconds_for_views(self.run_time)
   end
 
   def mile_pace_in_minutes
-    pace = (self.run_time.to_f / 60) / self.miles
-    pace.round(2)
+    format_seconds_for_views((self.run_time / self.miles))
+  end
+
+  def format_seconds_for_views(seconds)
+    hours = (seconds / 3600).to_i
+    # subtract the seconds that are already part of hours
+    minutes = (seconds / 60).to_i.to_s
+    seconds = (seconds % 60).round.to_s
+    seconds = "0" + seconds if seconds.length == 1
+    if hours >= 1
+      minutes = "0" + minutes if minutes.length == 1
+      "#{hours}:#{minutes}:#{seconds}"
+    else
+      "#{minutes}:#{seconds}"
+    end
   end
 
   def self.longest_run_for(id)
@@ -53,12 +66,20 @@ class Run < ActiveRecord::Base
   #   all.where(user_id: id)
   # end
 
-  
-
-
-
-
-  # def pace
-    
+  #  def format_seconds_for_views(seconds)
+  #   seconds = (seconds % 60)
+  #   minutes = (seconds / 60)
+  #   binding.pry
+  #   hours = (minutes / 60).to_i
+  #   minutes_left = (minutes % 60).to_i.to_s
+  #   seconds = seconds.round.to_s
+  #   seconds = "0" + seconds if seconds.length == 1
+  #   if hours >= 1
+  #     minutes_left = "0" + minutes_left if minutes_left.length == 1
+  #     "#{hours}:#{minutes_left}:#{seconds}"
+  #   else
+  #     "#{minutes.to_i.to_s}:#{seconds}"
+  #   end
   # end
+
 end

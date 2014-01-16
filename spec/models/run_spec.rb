@@ -31,12 +31,16 @@ describe Run do
 
   it "converts the run time to hours, minutes and seconds" do 
     run = FactoryGirl.create(:run)
-    expect(run.time_in_minutes).to eq("00:15:40")
+    expect(run.time_in_minutes).to eq("15:40")
+    run2 = FactoryGirl.create(:second_run, :run_time => 5200)
+    expect(run2.time_in_minutes).to eq("1:24:23")
   end
 
   it "calculates the mile pace for a run in minutes and seconds" do 
     run = FactoryGirl.create(:run)
-    expect(run.mile_pace_in_minutes).to eq("05:03")
+    run2 = FactoryGirl.create(:second_run)
+    expect(run.mile_pace_in_minutes).to eq("5:02")
+    expect(run2.mile_pace_in_minutes).to eq("5:22")
   end
 
   xit "finds the longest run from a user's runs" do
