@@ -66,12 +66,21 @@ class User < ActiveRecord::Base
     distance
   end
 
-  # def fastest_run
-  #   runs.each do |run|
-  #     run_pace = (run.run_time / run.distance)
-  #   end
-  #   runs.order(run_pace).first
-  # end
+  def fastest_run
+    run_pace = 30
+    fast_runs = []
+    runs.each do |run|
+      if (run.run_time / run.distance.to_f) < run_pace 
+        run_pace = (run.run_time / run.distance.to_f)
+        fast_runs << run
+      end
+    end
+    fast_runs.last
+  end
+
+  def fastest_mile_pace
+    fastest_run.mile_pace_in_minutes
+  end
 
   private
 

@@ -10,7 +10,7 @@ describe Run do
   it { should validate_presence_of(:run_time) }
   it { should validate_presence_of(:workout_datetime) }
   it { should belong_to(:user) }
-  it { should validate_uniqueness_of(:workout_datetime) }
+  # it { should validate_uniqueness_of(:workout_datetime) }
 
   it "should be created with valid attributes" do 
     FactoryGirl.create(:run).should be_valid
@@ -63,9 +63,15 @@ describe Run do
   end
 
   it "finds a user's fastest run" do 
-    run = FactoryGirl.create(:run)
-    run2 = FactoryGirl.create(:second_run)
-    expect(@user1.fastest_run.run_time).to eq(run.run_time)
+    run = FactoryGirl.create(:run, run_time: 500, distance: 5000)
+    faster_run = FactoryGirl.create(:second_run, run_time: 200, distance: 4000)
+    expect(@user1.fastest_run.run_time).to eq(faster_run.run_time)
+  end
+
+  it "finds the mile pace in minutes for the user's fastest run" do 
+    run = FactoryGirl.create(:run, run_time: 500, distance: 5000)
+    faster_run = FactoryGirl.create(:second_run, run_time: 200, distance: 4000)
+    expect(@user1.fastest_mile_pace).to eq("1:20")
   end
 
   # it "finds the fastest mile pace for all a user's runs" do 

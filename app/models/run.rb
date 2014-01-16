@@ -6,7 +6,7 @@ class Run < ActiveRecord::Base
   validates :run_time, presence: true
   validates :workout_datetime, presence: true
 
-  validates_uniqueness_of :workout_datetime
+  # validates_uniqueness_of :workout_datetime
 
   # THINGS WE NEED:
   # FOR SINGLE RUN:
