@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.1'
 gem 'rspec-rails'
 gem 'omniauth-mapmyfitness-oauth2', :path => "../omniauth-mapmyfitness"
+gem 'mapmyfitness', :path => "../mapmyfitness"
 
 # Use postgresql as the database for Active Record
 group :development, :test do
