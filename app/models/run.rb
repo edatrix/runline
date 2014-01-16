@@ -15,6 +15,16 @@ class Run < ActiveRecord::Base
     Time.at(self.run_time).utc.strftime("%M:%S")
   end
 
+  def longest_run_in_last_14_days
+    longest_run = 0
+    current_user.runs.each do |run|
+      if run.distance > longest_run
+        longest_run = run.distance
+      end
+      longest_run
+    end
+  end
+
   # def pace
     
   # end

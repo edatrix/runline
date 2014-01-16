@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe Run do
+  before do
+    @user1 = FactoryGirl.create(:user)
+  end
 
   it { should validate_presence_of(:user_id) }
   it { should validate_presence_of(:distance) }
@@ -15,7 +18,7 @@ describe Run do
 
   xit "validates that a run is unique (does not occur at the same time as another run)" do
     run = FactoryGirl.create(:run)
-    run2 = FactoryGirl.build(:third_run)
+    #run2 = FactoryGirl.build(:third_run)
     puts run.workout_datetime
     expect(run).not_to be_valid
   end
@@ -44,8 +47,9 @@ describe Run do
   end
 
   xit "finds the longest run from a user's runs in the last 14 days" do
-    run = Run.create(user_id: 1, distance: 1609.34, run_time: 43, workout_datetime: "Monday")
-    expect(@user1.longest_run_in_last_14_days).to eq(1.0)
+    Run.create(user_id: 1, distance: 1609.34, run_time: 43, workout_datetime: "Monday")
+    runs = @user1.runs
+    expect(runs.longest_run_in_last_14_days).to eq(1.0)
   end
 
   xit "finds the average pace of all the runs for the last 14 days" do
