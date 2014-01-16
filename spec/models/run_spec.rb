@@ -33,7 +33,11 @@ describe Run do
     run = FactoryGirl.create(:run)
     expect(run.time_in_minutes).to eq("15:40")
     run2 = FactoryGirl.create(:second_run, :run_time => 5200)
-    expect(run2.time_in_minutes).to eq("1:24:23")
+    expect(run2.time_in_minutes).to eq("1:26:40")
+    run3 = FactoryGirl.create(:second_run, :run_time => 10400)
+    expect(run3.time_in_minutes).to eq("2:53:20")
+    run4 = FactoryGirl.create(:run, :run_time => 94)
+    expect(run4.time_in_minutes).to eq("1:34")
   end
 
   it "calculates the mile pace for a run in minutes and seconds" do 
@@ -41,6 +45,8 @@ describe Run do
     run2 = FactoryGirl.create(:second_run)
     expect(run.mile_pace_in_minutes).to eq("5:02")
     expect(run2.mile_pace_in_minutes).to eq("5:22")
+    run3 = FactoryGirl.create(:run, run_time: 2123)
+    expect(run3.mile_pace_in_minutes).to eq("11:23")
   end
 
   xit "finds the longest run from a user's runs" do

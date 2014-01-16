@@ -11,8 +11,8 @@ class Run < ActiveRecord::Base
   # THINGS WE NEED:
   # FOR SINGLE RUN:
   # 1. distance in miles check
-  # 2. time in hours, minutes, seconds (1:03:23)
-  # 3. mile pace in minutes, seconds (6:35)
+  # 2. time in hours, minutes, seconds (1:03:23) check
+  # 3. mile pace in minutes, seconds (6:35) check
 
   # FOR ALL A USERS RUNS:
   # 1. total distance in miles over last 14 days
@@ -34,11 +34,10 @@ class Run < ActiveRecord::Base
     format_seconds_for_views((self.run_time / self.miles))
   end
 
-  def format_seconds_for_views(seconds)
-    hours = (seconds / 3600).to_i
-    # subtract the seconds that are already part of hours
-    minutes = (seconds / 60).to_i.to_s
-    seconds = (seconds % 60).round.to_s
+  def format_seconds_for_views(total_seconds)
+    hours = (total_seconds / 3600).to_i
+    minutes = ((total_seconds / 60) % 60).to_i.to_s
+    seconds = (total_seconds % 60).round.to_s
     seconds = "0" + seconds if seconds.length == 1
     if hours >= 1
       minutes = "0" + minutes if minutes.length == 1
@@ -64,22 +63,6 @@ class Run < ActiveRecord::Base
 
   # def self.all_runs_for(id)
   #   all.where(user_id: id)
-  # end
-
-  #  def format_seconds_for_views(seconds)
-  #   seconds = (seconds % 60)
-  #   minutes = (seconds / 60)
-  #   binding.pry
-  #   hours = (minutes / 60).to_i
-  #   minutes_left = (minutes % 60).to_i.to_s
-  #   seconds = seconds.round.to_s
-  #   seconds = "0" + seconds if seconds.length == 1
-  #   if hours >= 1
-  #     minutes_left = "0" + minutes_left if minutes_left.length == 1
-  #     "#{hours}:#{minutes_left}:#{seconds}"
-  #   else
-  #     "#{minutes.to_i.to_s}:#{seconds}"
-  #   end
   # end
 
 end
