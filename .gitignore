@@ -20,3 +20,5 @@ runline_development
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+runline_development
+config/app_environment_variables.rb

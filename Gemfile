@@ -2,14 +2,15 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
-gem 'omniauth-mapmyfitness'
+gem 'rspec-rails'
+gem 'omniauth-mapmyfitness-oauth2', :github => "jcasimir/omniauth-mapmyfitness-oauth2"
+gem 'mapmyfitness', :github => "jcasimir/mapmyfitness"
 gem 'faraday'
 gem 'faker'
 gem 'pry'
 gem 'resque'
 gem 'resque_mailer'
 gem 'haml-rails'
-
 
 # Use postgresql as the database for Active Record
 group :development, :test do
@@ -19,6 +20,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'sqlite3'
   gem 'shoulda-matchers'
+  gem 'pry'
 end
 
 group :test do
