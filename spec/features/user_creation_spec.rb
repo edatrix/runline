@@ -13,7 +13,6 @@ describe "User Signup" do
 
   it "sees dashboard after login" do
     click_on("Login with MapMyFitness")
-    save_and_open_page
     expect(page).should have_content "Total miles in last 14 days"
   end
 
