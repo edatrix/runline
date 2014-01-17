@@ -8,12 +8,12 @@ describe "User Signup" do
   end
 
   it "can see login button" do
-    expect(page).to have_content "Login with MapMyFitness"
+    expect(page).should have_link('Login with MapMyFitness')
   end
 
   it "sees dashboard after login" do
     click_on("Login with MapMyFitness")
-    expect(page).to have_content "RUN! RUN! RUN!"
+    expect(page).should have_content "Personal Stats"
   end
 
   # it "clicks the login button" do
@@ -23,3 +23,4 @@ describe "User Signup" do
   # end
 
 end
+

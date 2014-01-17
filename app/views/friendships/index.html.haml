@@ -1,22 +1,25 @@
-%a{ :href => "/friendships"} My Friends
-= link_to "Friend Requests", requests_friendships_path
-= form_for current_user.friendships.new do |f|
-  = f.text_field :friend_name, placeholder: "username"
-  = f.submit "Send Friend Request"
-%h1 Your friends
-%table
-  %thead
-    %tr
-      %th Name
-      %tbody
-      - current_user.total_approved_friendships.each do |friendship|
-        %tr
-        - if friendship.user_id == current_user.id
-          %td
-            = friendship.friend.username
-            = button_to "Compare", compare_path(friendship.friend.id), :method => :get
-        - else
-          %td 
-            = friendship.user.username
-            = button_to "Compare", compare_path(friendship.user.id), :method => :get 
-        = button_to "Remove Friend", remove_friendship_path(friendship), :method => :delete
+%section.content-section
+  %a{ :href => "/friendships"} My Friends
+  = link_to "Friend Requests", requests_friendships_path
+  = form_for current_user.friendships.new do |f|
+    = f.text_field :friend_name, placeholder: "username"
+    = f.submit "Send Friend Request"
+  %h1 Your friends
+  %table
+    %thead
+      %tr
+        %th Name
+        %tbody
+        - current_user.total_approved_friendships.each do |friendship|
+          %tr
+          - if friendship.user_id == current_user.id
+            %td
+              = friendship.friend.username
+              = button_to "Compare", compare_path(friendship.friend.id), :method => :get
+          - else
+            %td 
+              = friendship.user.username
+              = button_to "Compare", compare_path(friendship.user.id), :method => :get 
+          = button_to "Remove Friend", remove_friendship_path(friendship), :method => :delete
+
+  %a{ :href => "/logout"} Logout
