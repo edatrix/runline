@@ -43,7 +43,5 @@ ActiveRecord::Schema.define(version: 20140111193226) do
     t.string   "provider"
     t.string   "uid"
     t.string   "token"
-    t.string   "secret"
   end
-
 end

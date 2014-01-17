@@ -1,3 +1,4 @@
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :mapmyfitness, "qjy542tq9waw28njuqv7hz4ttddc2bch", "bKe5xBJdqtppdTqS3PYvyNn4xUj75nJXFFqT2ThuN5t"
+  provider :mapmyfitness, ENV['MMF_API_KEY'], ENV['MMF_API_SECRET']
 end
