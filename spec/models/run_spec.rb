@@ -81,4 +81,10 @@ describe Run do
     expect(@user1.longest_run.distance).to eq(run3.distance)
   end
 
+  it "formats the workout date time to a readable date" do
+    run1 = FactoryGirl.create(:run, workout_datetime: "2012-11-03T23:12:49+00:00")
+    expect(run1.format_date).to eq("Sat, 11/03/12")
+
+  end
+
 end

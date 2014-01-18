@@ -32,5 +32,9 @@ class Run < ActiveRecord::Base
     end
   end
 
+  def format_date
+    workout_datetime.to_time.strftime("%a, %m/%d/%y")
+  end
+
 
 end
