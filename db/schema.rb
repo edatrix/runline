@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140111193226) do
+ActiveRecord::Schema.define(version: 20140118221028) do
 
   create_table "friendships", force: true do |t|
     t.integer  "user_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140111193226) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "mmf_identifier"
   end
 
   add_index "runs", ["user_id"], name: "index_runs_on_user_id"
@@ -43,5 +44,7 @@ ActiveRecord::Schema.define(version: 20140111193226) do
     t.string   "provider"
     t.string   "uid"
     t.string   "token"
+    t.string   "secret"
   end
+
 end
