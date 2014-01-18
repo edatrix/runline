@@ -2,15 +2,18 @@
   %h2.table-title Aggregate Stats 14 Days
   %table.stats-table
     %thead
-      %tr.first-row
-        %th Total Miles
-        %th Average Pace
-        %th Longest Run
+      %tr
+        %th.caption Total Miles
+        %th.caption Average Pace
+        %th.caption Longest Run
         %tbody
           %tr
-            %td 10.2 mi
-            %td 4 mph
-            %td 17 Jan 2014
+            %td
+              = @current_user.total_distance_in_miles
+            %td
+              = @current_user.total_average_mile_pace
+            %td
+              = @current_user.longest_run.miles
 
   %h2.table-title Run Logs 14 Days
   %table.runs-table
@@ -21,19 +24,13 @@
         %th Run Time
         %th Workout Datetime
         %tbody
+        - @my_runs.each do |run|
           %tr
-            %td Sprints
-            %td 1.2 mi
-            %td 34 min
-            %td 17 Jan 2014
-          %tr
-            %td 10k Train
-            %td 5 mi
-            %td 60 min
-            %td 16 Jan 2014
-          %tr
-            %td Zombie Run 
-            %td 50 mi
-            %td 600 min
-            %td 14 Jan 2014
-
+            %td
+              = run.name
+            %td
+              = run.distance
+            %td
+              = run.run_time
+            %td
+              = run.workout_datetime
