@@ -1,17 +1,22 @@
 .stats-table
-  box-sizing: border-box
-  border-collapse: separate
-  border-spacing: 10px
+  border-collapse: collapse
+  border-spacing: 0
   margin-bottom: 5%
   width: 60%
-  
 
-tr
+  thead:first-child tr th,
+  thead:first-child tr td
+    border-top: 0
+.caption
+  background-color: #FC9D06
+  font-size: 0.85em
+  font-weight: bold
   text-align: left
+  margin-bottom: 0.5em
 
-.first-row
-  border-collapse: collapse
-  border-bottom: 2px solid black
+tr:first-child
+  border-bottom: 1px solid #043484
+  text-align: left
 
 .runs-table
   box-sizing: border-box

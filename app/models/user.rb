@@ -58,6 +58,18 @@ class User < ActiveRecord::Base
     format_seconds_for_views(total_seconds / total_distance_in_miles)
   end
 
+  def pace
+    total_seconds = 0
+    runs.each do |run|
+      total_seconds += run.run_time
+    end
+    total_distance = 0
+    runs.each do |run|
+      total_distance += run.miles
+    end
+    total_seconds/total_distance 
+  end
+
   def total_distance_in_miles
     distance = 0
     runs.each do |run|
