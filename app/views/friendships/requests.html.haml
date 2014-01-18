@@ -1,17 +1,13 @@
 %section.content-section
-  %a{ :href => "/friendships/requests"} Friend Requests
-  %a{ :href => "/friendships"} My Friends
-  %h1 You have pending friends
   %table
     %th
       %tr
         %th Name
         %tbody
-        - current_user.pending_inverse_friendships.each do |friendship|
-          %tr
-            %td
-              = friendship.user.username
+          - current_user.pending_inverse_friendships.each do |friendship|
+            %tr
+              %td
+                = friendship.user.username
               = button_to "Approve", approve_friendship_path(friendship), :method => :put
               = button_to "Reject", reject_friendship_path(friendship), :method => :delete
 
-  %a{ :href => "/logout"} Logout

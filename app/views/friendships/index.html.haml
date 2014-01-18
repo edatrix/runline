@@ -1,6 +1,4 @@
 %section.content-section
-  %a{ :href => "/friendships"} My Friends
-  = link_to "Friend Requests", requests_friendships_path
   = form_for current_user.friendships.new do |f|
     = f.text_field :friend_name, placeholder: "username"
     = f.submit "Send Friend Request"
@@ -22,4 +20,3 @@
               = button_to "Compare", compare_path(friendship.user.id), :method => :get 
           = button_to "Remove Friend", remove_friendship_path(friendship), :method => :delete
 
-  %a{ :href => "/logout"} Logout
