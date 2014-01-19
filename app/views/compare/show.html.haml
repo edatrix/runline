@@ -1,7 +1,7 @@
 %section.content-section
   = link_to "Back to Friends", friendships_path
   %h2.table-title Aggregate Stats 14 Days
-  %table.stats-table
+  %table.table-main
     %thead
       %tr
         %th.caption Runner
@@ -36,14 +36,14 @@
             %td
               = @diff_longest_run
 
-  %h1 Your Run Logs
-  %table.runs-table
+  %h2.table-title Run Logs:  #{@current_user.username} 
+  %table.table-main
     %thead
       %tr
-        %th Run
-        %th Distance
-        %th Run Time
-        %th Workout Datetime
+        %th.caption Run
+        %th.caption Distance
+        %th.caption Run Time
+        %th.caption Workout Datetime
         %tbody
         - @my_runs.each do |run|
           %tr
@@ -55,14 +55,14 @@
               = run.time_in_minutes
             %td  
               = run.workout_datetime
-  %h1 #{@friend.username}'s run log
-  %table.runs-table
+  %h2.table-title Run Logs:  #{@friend.username}
+  %table.table-main
     %thead
       %tr
-        %th Run
-        %th Distance
-        %th Run Time
-        %th Workout Datetime
+        %th.caption Run
+        %th.caption Distance
+        %th.caption Run Time
+        %th.caption Workout Datetime
         %tbody
         - @friend_runs.each do |run|
           %tr

@@ -1,6 +1,6 @@
 %section.content-section
   %h2.table-title Aggregate Stats 14 Days
-  %table.stats-table
+  %table.table-main
     %thead
       %tr
         %th.caption Total Miles
@@ -16,13 +16,13 @@
               = @current_user.longest_run.miles
 
   %h2.table-title Run Logs 14 Days
-  %table.runs-table
+  %table.table-main
     %thead
-      %tr.first-row
-        %th Run
-        %th Distance
-        %th Run Time
-        %th Workout Datetime
+      %tr
+        %th.caption Run
+        %th.caption Distance
+        %th.caption Run Time
+        %th.caption Workout Datetime
         %tbody
         - @my_runs.each do |run|
           %tr
