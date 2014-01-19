@@ -1,19 +1,31 @@
 %section.content-section
   %h1.headline Welcome to Runline
   %h2.body-copy Create virtual running groups and compete with friends.
+  
 
-  %ul.homepage-panel
-    %li.content-box
-      .inner-box
-        <img alt="Grid_sig_veggie_burrito" height="150" src="http://d2po17o2y4vue7.cloudfront.net/uploads/menu_group/image/3/grid_SIG_VEGGIE_BURRITO.png" width="200">
+  / %a.button-primary{ :href => "/login"} Login with MapMyFitness
 
-    %li.content-box
-      .inner-box
-        <img alt="Grid_sig_veggie_burrito" height="150" src="http://d2po17o2y4vue7.cloudfront.net/uploads/menu_group/image/3/grid_SIG_VEGGIE_BURRITO.png" width="200">
+  = button_to "Login with MapMyFitness", login_path, :method => :get
 
-    %li.content-box
-      .inner-box
-        <img alt="Grid_sig_veggie_burrito" height="150" src="http://d2po17o2y4vue7.cloudfront.net/uploads/menu_group/image/3/grid_SIG_VEGGIE_BURRITO.png" width="200">
+  .homepage-panel
+    .panel-container
+      %li.content-box
+        .inner-box
+          <img alt="runner_logo" height="225" src="http://www.treatment4addiction.com/blog/wp-content/uploads/runner-high-300x225.jpg" width="300">
+        .box-content
+          %h3 Track your Stats
+          %p Log your runs and keep track of your personal stats on Runline's user dashboard.
 
-  %a{ :href => "/login"} Login with MapMyFitness
+      %li.content-box
+        .inner-box
+          <img alt="runner_logo" height="225" src="http://2.bp.blogspot.com/-0GkaqUikz48/UbENyKlGowI/AAAAAAAAABQ/ZoaL4zseMTY/s1600/Running.jpg" width="300">
+        .box-content
+          %h3 Find Friends
+          %p Connect with friends who are Runline users and invite those who aren't to join the fun!
 
+      %li.content-box
+        .inner-box
+          <img alt="runner_logo" height="225" src="http://4.bp.blogspot.com/-AoisrB6UuKU/TysLxV7ZtkI/AAAAAAAAAC4/lweQZY4Zroo/s1600/Man%2B%26%2Bwoman%2Brunning%2Bin%2Bsilhouette.jpg" width="300">
+        .box-content
+          %h3 Compete!
+          %p Keep yourself in check by seeing how you stack up against other Runline users.
