@@ -42,7 +42,6 @@ GEM
     addressable (2.3.5)
     arel (4.0.1)
     atomic (1.1.14)
-    awesome_print (1.2.0)
     better_errors (1.0.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -198,9 +197,6 @@ GEM
       sprockets-rails (~> 2.0.0)
     shoulda-matchers (2.4.0)
       activesupport (>= 3.0.0)
-    simple_form (3.0.1)
-      actionpack (>= 4.0.0, < 4.1)
-      activemodel (>= 4.0.0, < 4.1)
     sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -239,7 +235,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  awesome_print
   better_errors
   binding_of_caller
   capybara
@@ -265,7 +260,6 @@ DEPENDENCIES
   rspec-rails
   sass-rails
   shoulda-matchers
-  simple_form
   sqlite3
   turbolinks
   uglifier
