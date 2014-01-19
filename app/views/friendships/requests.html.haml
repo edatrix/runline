@@ -1,13 +1,25 @@
 %section.content-section
-  %table
-    %th
+  %h3 Search Existing Runline Members and Invite them to Share their Dashboard:
+  = form_for current_user.friendships.new do |f|
+    = f.text_field :friend_name, placeholder: "username"
+    = f.submit "Send Friend Request"
+
+  %h3 Don't see a friend listed? Invite them to Runline:
+  = form_for current_user.friendships.new do |f|
+    = f.text_field :friend_name, placeholder: "username"
+    = f.submit "Send Friend Request"
+
+  %h2.table-title Pending Invites
+  %table.table-main
+    %thead
       %tr
-        %th Name
+        %th.caption Name
+        %th.caption Status
         %tbody
-          - current_user.pending_inverse_friendships.each do |friendship|
+          - current_user.pending_friendships.each do |friendship|
             %tr
               %td
-                = friendship.user.username
-              = button_to "Approve", approve_friendship_path(friendship), :method => :put
-              = button_to "Reject", reject_friendship_path(friendship), :method => :delete
+                = friendship.friend_id
+              %td
+                = friendship.status
 
