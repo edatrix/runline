@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.1'
 gem 'rspec-rails'
 gem 'omniauth-mapmyfitness-oauth2', :github => "jcasimir/omniauth-mapmyfitness-oauth2"
-gem 'mapmyfitness', :github => "jcasimir/mapmyfitness"
+gem 'mapmyfitness', :github => "billy22g/mapmyfitness"
 gem 'faraday'
 gem 'faker'
 gem 'pry'
