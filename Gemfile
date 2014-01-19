@@ -11,7 +11,6 @@ gem 'pry'
 gem 'resque'
 gem 'resque_mailer'
 gem 'haml-rails'
-gem 'chosen-rails'
 gem 'jquery-rails'
 gem 'sass-rails'
 
