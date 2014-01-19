@@ -11,6 +11,10 @@ gem 'pry'
 gem 'resque'
 gem 'resque_mailer'
 gem 'haml-rails'
+gem 'chosen-rails'
+gem 'jquery-rails'
+gem 'sass-rails'
+gem 'simple_form'
 
 # Use postgresql as the database for Active Record
 group :development, :test do
@@ -36,14 +40,11 @@ end
 
 group :assets do
   gem 'bourbon'
-  gem 'sass-rails'
   gem 'normalize-rails'
   gem 'coffee-rails'
   gem 'underscore-rails'
   gem 'uglifier'
 end
-
-gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -52,7 +53,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
+  # bundle exec rake doc:rails generates the API under doc/api.  gem 'sdoc', require: false
 end
 
