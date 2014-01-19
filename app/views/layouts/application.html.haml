@@ -13,7 +13,6 @@
   %meta(name="apple-mobile-web-app-capable" content="yes")
   %meta(name="apple-mobile-web-app-status-bar-style" content="black")
   = stylesheet_link_tag :application, :media => "all", "data-turbolinks-track" => true
-  = javascript_include_tag "application", "data-turbolinks-track" => true
   = csrf_meta_tag
 
 %body(role="document")
@@ -23,4 +22,6 @@
     = yield
     = flash.notice
     = render 'layouts/footer'
+
+  = javascript_include_tag "application", "data-turbolinks-track" => true
 
