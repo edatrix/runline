@@ -15,6 +15,7 @@ gem 'chosen-rails'
 gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
+gem 'awesome_print', :require => 'ap'
 
 # Use postgresql as the database for Active Record
 group :development, :test do
@@ -39,7 +40,6 @@ group :production do
 end
 
 group :assets do
-  gem 'bourbon'
   gem 'normalize-rails'
   gem 'coffee-rails'
   gem 'underscore-rails'
