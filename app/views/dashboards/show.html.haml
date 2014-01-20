@@ -7,7 +7,7 @@
         %th.caption Average Pace
         %th.caption Longest Run
         %tbody
-          - if @current_user.runs.any?
+          - unless @current_user.runs.any?
             %tr
               %td
                 You have no runs!
