@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
 
     store = MapMyFitness::WorkoutStore.new(current_user.token)
     runs = store.workouts_for_last_14_days_by(current_user.uid)
-    # puts runs.inspect
     runs.each do |run|
       Run.where(:mmf_identifier => run.id).first_or_create(
                             user_id: User.find_by_uid(current_user.uid).id,
