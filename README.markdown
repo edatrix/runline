@@ -4,12 +4,7 @@ For OAuth2 to work properly you need to do two things:
 
 ### Credentials in the Environment
 
-Define two environment variables by running these instructions in the *same* terminal where you're going to start the server:
-
-```plain
-export MMF_API_KEY="qjy542tq9waw28njuqv7hz4ttddc2bch"
-export MMF_API_SECRET="bKe5xBJdqtppdTqS3PYvyNn4xUj75nJXFFqT2ThuN5t"
-```
+Ensure you have the app environment variables (MMF_API_KEY and MMF_API_SECRET) saved in the .env file in the root of your directory.
 
 ### Using a Special URL
 
