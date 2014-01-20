@@ -22,5 +22,5 @@ runline_development
 /tmp
 runline_development
 
-/config/app_environment_variables.rb
+.env
 

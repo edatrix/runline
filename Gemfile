@@ -23,6 +23,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'shoulda-matchers'
   gem 'pry'
+  gem 'dotenv-rails'
 end
 
 group :test do
