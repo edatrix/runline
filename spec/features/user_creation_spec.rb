@@ -7,7 +7,7 @@ describe "User Signup" do
     page.visit root_path 
   end
 
-  it "sees dashboard after login" do
+  xit "sees dashboard after login" do
     click_on("Login with MapMyFitness")
     expect(page).to have_content "Aggregate Stats 14 Days"
   end
