@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
+  scope :except, proc {|user| where("id != ?", user.id)}
+
   def self.find_or_create_by_auth(user_data)
     find_or_create_by_provider_and_uid(user_data.provider, 
                                        user_data.uid,
