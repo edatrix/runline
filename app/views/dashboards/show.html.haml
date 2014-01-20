@@ -19,18 +19,21 @@
   %table.table-main
     %thead
       %tr
-        %th.caption Run
-        %th.caption Distance
-        %th.caption Run Time
-        %th.caption Workout Datetime
+        %th.caption Name
+        %th.caption Date
+        %th.caption Distance 
+        %th.caption Time
+        %th.caption Average Pace
         %tbody
         - @my_runs.each do |run|
           %tr
             %td
               = run.name
             %td
-              = run.distance
+              = run.format_date
             %td
-              = run.run_time
+              = run.miles
             %td
-              = run.workout_datetime
+              = run.time_in_minutes
+            %td
+              = run.mile_pace_in_minutes

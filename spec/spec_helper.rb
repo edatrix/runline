@@ -70,6 +70,6 @@ OmniAuth.config.test_mode = true
 OmniAuth.config.mock_auth[:mapmyfitness] = OmniAuth::AuthHash.new({
   :provider => 'mapmyfitness',
   :uid => '123545',
-  :info => {:first_name => "Jane", :email => "jane@example.com"},
+  :info => {:first_name => "Jane", :last_name => "Doe", :email => "jane@example.com"},
   :credentials => {}
 })
