@@ -13,13 +13,3 @@
  *= require_tree .
  */
 
-@mixin rounded-corners($radius) {
-  border-radius: $radius;
-  -moz-border-radius: $radius;
-  -webkit-border-radius: $radius;
-}
-
-.content-box, .inner-box, img, .box-content {
-  @include rounded-corners(5px);
-}
-
