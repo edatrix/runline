@@ -81,15 +81,7 @@ class User < ActiveRecord::Base
   end
 
   def fastest_run
-    run_pace = 30
-    fast_runs = []
-    runs.each do |run|
-      if (run.run_time / run.distance.to_f) < run_pace 
-        run_pace = (run.run_time / run.distance.to_f)
-        fast_runs << run
-      end
-    end
-    fast_runs.last
+    runs.min_by { |run| (run.run_time / run.distance.to_f)}
   end
 
   def fastest_mile_pace
