@@ -7,13 +7,22 @@
         %th.caption Average Pace
         %th.caption Longest Run
         %tbody
-          %tr
-            %td
-              = @current_user.total_distance_in_miles
-            %td
-              = @current_user.total_average_mile_pace
-            %td
-              = @current_user.longest_run.miles
+          - if @current_user.runs.count == 0
+            %tr
+              %td
+                You have no runs!
+              %td
+                You have no runs!
+              %td
+                You have no runs!
+          - else
+            %tr
+              %td
+                = @current_user.total_distance_in_miles
+              %td
+                = @current_user.total_average_mile_pace
+              %td
+                = @current_user.longest_run.miles
 
   %h2.table-title Run Logs 14 Days
   %table.table-main
