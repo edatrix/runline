@@ -1,25 +1,48 @@
 %section.content-section
-  = link_to "Back to Friends", friendships_path
-  %h1 How do you stack up against #{@friend.username}
-  %table
+  %h2.table-title Aggregate Stats 14 Days
+  %table.table-main
     %thead
       %tr
-        %th Total miles in past 14 days
-        %th Fastest pace
-        %th Miles run during last activity
+        %th.caption Runner
+        %th.caption Total Miles
+        %th.caption Average Pace
+        %th.caption Longest Run
         %tbody
           %tr
-            %td 10.2 mi
-            %td 5 mph
-            %td 17 January 2014
-  %h1 Your Run Logs
-  %table
+            %td
+              = @current_user.username
+            %td
+              = @current_user.total_distance_in_miles
+            %td
+              = @current_user.total_average_mile_pace
+            %td
+              = @current_user.longest_run.miles
+          %tr
+            %td
+              = @friend.username
+            %td
+              = @friend.total_distance_in_miles
+            %td
+              = @friend.total_average_mile_pace
+            %td
+              = @friend.longest_run.miles
+          %tr
+            %td Difference
+            %td
+              = @diff_miles
+            %td
+              = @diff_pace
+            %td
+              = @diff_longest_run
+
+  %h2.table-title Run Logs:  #{@current_user.username} 
+  %table.table-main
     %thead
       %tr
-        %th Run
-        %th Distance
-        %th Run Time
-        %th Workout Datetime
+        %th.caption Run
+        %th.caption Distance
+        %th.caption Run Time
+        %th.caption Workout Datetime
         %tbody
         - @my_runs.each do |run|
           %tr
@@ -31,14 +54,14 @@
               = run.time_in_minutes
             %td  
               = run.workout_datetime
-  %h1 #{@friend.username}'s run log
-  %table
+  %h2.table-title Run Logs:  #{@friend.username}
+  %table.table-main
     %thead
       %tr
-        %th Run
-        %th Distance
-        %th Run Time
-        %th Workout Datetime
+        %th.caption Run
+        %th.caption Distance
+        %th.caption Run Time
+        %th.caption Workout Datetime
         %tbody
         - @friend_runs.each do |run|
           %tr
