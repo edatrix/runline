@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   def create
     user_data = MapMyFitness::User.new(request.env["omniauth.auth"])
     @user = User.find_or_create_by_auth(user_data)
+    @user.update_attributes(token: user_data.token)
     session[:user_id] = @user.id
     @user.save!
 
