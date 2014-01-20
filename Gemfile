@@ -11,11 +11,12 @@ gem 'mapmyfitness', :github => "billy22g/mapmyfitness"
 gem 'faraday'
 gem 'faker'
 gem 'pry'
-gem 'resque'
+gem 'resque', "~> 2.0.0.pre.1", github: "resque/resque"
 gem 'resque_mailer'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'sass-rails'
+gem 'whenever'
 
 # Use postgresql as the database for Active Record
 group :development, :test do
