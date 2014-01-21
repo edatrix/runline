@@ -7,7 +7,7 @@
         %th.caption Average Pace
         %th.caption Longest Run
         %tbody
-          - unless @current_user.runs.any?
+          - unless current_user.runs.any?
             %tr
               %td
                 You have no runs!
@@ -18,11 +18,11 @@
           - else
             %tr
               %td
-                = @current_user.total_distance_in_miles
+                = "#{current_user.total_distance_in_miles} miles"
               %td
-                = @current_user.total_average_mile_pace
+                = "#{current_user.total_average_mile_pace}/mile"
               %td
-                = @current_user.longest_run.miles
+                = "#{current_user.longest_run.miles} miles"
 
   %h2.table-title Run Logs 14 Days
   %table.table-main
@@ -41,8 +41,8 @@
             %td
               = run.format_date
             %td
-              = run.miles
+              = "#{run.miles} miles"
             %td
-              = run.time_in_minutes
+              = run.time_in_minutes 
             %td
-              = run.mile_pace_in_minutes
+              = "#{run.mile_pace_in_minutes}/mile"
