@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/billy22g/mapmyfitness.git
-  revision: b48ff9e9ebe3f49c1310b3e464113423ecca22b0
+  revision: 0e49247f1bc860d7f0873fca39717cb3e653e2de
   specs:
     mapmyfitness (0.0.1)
 
@@ -171,7 +171,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.1.1)
-    redis (3.0.6)
+    redis (3.0.7)
     redis-namespace (1.4.1)
       redis (~> 3.0.4)
     resque (1.25.1)
