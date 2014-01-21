@@ -9,15 +9,18 @@ class User < ActiveRecord::Base
   has_many :friends, :through => :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+  has_many :invites
 
   scope :except, proc {|user| where("id != ?", user.id)}
 
   def self.requestable_users(user)
-    potential_friends = where("id != ?", user.id).collect do |friend|
+    potential_friends = []
+    where("id != ?", user.id).collect do |friend|
       if !user.total_approved_friends.include?(friend) && !user.total_pending_friends.include?(friend)
-        friend
+        potential_friends << friend 
       end
     end
+    potential_friends
   end
 
   def self.find_or_create_by_auth(user_data)
@@ -53,7 +56,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def send_friend_request_email(email, username)
+  def self.send_friend_request_email(email, username)
     FriendRequestNotifier.email_friend(email, username).deliver
   end
 
