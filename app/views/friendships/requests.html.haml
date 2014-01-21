@@ -1,7 +1,7 @@
 %section.content-section
   %h3 Search Existing Runline Members and Invite them to Share their Dashboard:
   = form_tag(add_friend_path) do
-    = select_tag "user", options_from_collection_for_select(User.except(current_user), "id", "username", ), class: 'chosen-select',
+    = select_tag "user", options_from_collection_for_select(User.except(current_user), "id", "username"), class: 'chosen-select',
       name: 'user_id'
     = submit_tag "Send Request"
   %h3 Don't see a friend listed? Invite them to Runline:
