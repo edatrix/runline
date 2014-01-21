@@ -11,7 +11,7 @@ Runline::Application.routes.draw do
 
   resources :users
   
-  resources :friendships, only: [:index, :create, :delete, :update] do
+  resources :friendships, only: [:index, :delete, :update] do
     collection do
       get :requests
     end
@@ -23,5 +23,6 @@ Runline::Application.routes.draw do
     end
   end
   delete "/friendships" => "friendships#destroy"
+  post "/friendships" => "friendships#create", as: :add_friend
 
 end
