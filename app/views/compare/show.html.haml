@@ -4,41 +4,54 @@
   - elsif @friend.runs.empty?
     %h1 Your friend doesn't have any runs! Tell them to get off their butt and get out there!
   - else
-    %h2.table-title Aggregate Stats 14 Days
-    %table.table-main
-      %thead
-        %tr
-          %th.caption Runner
-          %th.caption Total Miles
-          %th.caption Average Pace
-          %th.caption Longest Run
-          %tbody
-            %tr
-              %td
-                = current_user.username
-              %td
-                = "#{current_user.total_distance_in_miles} miles"
-              %td
-                = "#{current_user.total_average_mile_pace}/mile"
-              %td
-                = "#{current_user.longest_run.miles} miles"
-            %tr
-              %td
-                = @friend.username
-              %td
-                = "#{@friend.total_distance_in_miles} miles"
-              %td
-                = "#{@friend.total_average_mile_pace}/mile"
-              %td
-                = "#{@friend.longest_run.miles} miles"
-            %tr
-              %td Difference
-              %td
-                = @diff_miles
-              %td
-                = current_user.compare_total_average_mile_pace_with(@friend)
-              %td
-                = @diff_longest_run
+
+  %div.compare-stat-container
+    %div.compare-stat-element
+      %ul.stat-element
+        %li
+        = current_user.username
+        %li.stat-title Total Distance
+        %li.stat-data
+          = "#{current_user.total_distance_in_miles} miles"
+      %ul.stat-element
+        %li.stat-title Average Pace
+        %li.stat-data
+          = "#{current_user.total_average_mile_pace}/mile"
+      %ul.stat-element
+        %li.stat-title Longest Run
+        %li.stat-data
+          = "#{current_user.longest_run.miles} miles"
+
+    %div.compare-stat-element
+      %ul.stat-element
+        %li
+        = @friend.username
+        %li.stat-title Total Distance
+        %li.stat-data
+          = "#{@friend.total_distance_in_miles} miles"
+      %ul.stat-element
+        %li.stat-title Average Pace
+        %li.stat-data
+          = "#{@friend.total_average_mile_pace}/mile"
+      %ul.stat-element
+        %li.stat-title Longest Run
+        %li.stat-data
+          = "#{@friend.longest_run.miles} miles"
+
+    %div.compare-stat-element
+      %ul.stat-element
+        %li Difference
+        %li.stat-title Total Distance
+        %li.stat-data
+          = @diff_miles
+      %ul.stat-element
+        %li.stat-title Average Pace
+        %li.stat-data
+          = current_user.compare_total_average_mile_pace_with(@friend)
+      %ul.stat-element
+        %li.stat-title Longest Run
+        %li.stat-data
+          = @diff_longest_run
 
     %h2.table-title Run Logs:  #{current_user.username} 
     %table.table-main
