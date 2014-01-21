@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 gem 'rspec-rails'
+gem 'chosen-rails'
+
 group :development, :test do
   gem 'dotenv-rails'
 end
