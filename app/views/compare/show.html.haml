@@ -10,13 +10,13 @@
         %tbody
           %tr
             %td
-              = @current_user.username
+              = current_user.username
             %td
-              = @current_user.total_distance_in_miles
+              = current_user.total_distance_in_miles
             %td
-              = @current_user.total_average_mile_pace
+              = current_user.total_average_mile_pace
             %td
-              = @current_user.longest_run.miles
+              = current_user.longest_run.miles
           %tr
             %td
               = @friend.username
@@ -31,11 +31,11 @@
             %td
               = @diff_miles
             %td
-              = @current_user.compare_total_average_mile_pace_with(@friend)
+              = current_user.compare_total_average_mile_pace_with(@friend)
             %td
               = @diff_longest_run
 
-  %h2.table-title Run Logs:  #{@current_user.username} 
+  %h2.table-title Run Logs:  #{current_user.username} 
   %table.table-main
     %thead
       %tr
