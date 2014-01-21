@@ -1,5 +1,6 @@
-%h1 Your Profile
-- form_for current_user do |f|
-  = f.label :email
-  = f.text_field :email
-  = f.submit "Update Your Profile" 
+%section.content-section
+  %h1 Your Profile
+  = form_for current_user do |f|
+    = f.label :email
+    = f.text_field :email
+    = f.submit "Update Your Profile" 

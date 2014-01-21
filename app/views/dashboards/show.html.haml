@@ -1,42 +1,48 @@
-%body
-  %h1 Personal Stats
-  %a{ :href => "/friendships"} My Friends
+%section.content-section
+  %h2.table-title Aggregate Stats 14 Days
+  %table.table-main
+    %thead
+      %tr
+        %th.caption Total Miles
+        %th.caption Average Pace
+        %th.caption Longest Run
+        %tbody
+          - unless current_user.runs.any?
+            %tr
+              %td
+                You have no runs!
+              %td
+                You have no runs!
+              %td
+                You have no runs!
+          - else
+            %tr
+              %td
+                = "#{current_user.total_distance_in_miles} miles"
+              %td
+                = "#{current_user.total_average_mile_pace}/mile"
+              %td
+                = "#{current_user.longest_run.miles} miles"
 
-%table{:cellpadding => 5, :cellspacing => 5}
-  %thead
-    %tr
-      %th Total miles in last 14 days
-      %th Fastest pace
-      %th Miles run during last activity
-      %tbody
-        %tr
-          %td 10.2 mi
-          %td 4 mph
-          %td 17 Jan 2014
-
-%table{:cellpadding => 5, :cellspacing => 5}
-  %thead
-    %tr
-      %th Run
-      %th Distance
-      %th Run Time
-      %th Workout Datetime
-      %tbody
-        %tr
-          %td Sprints
-          %td 1.2 mi
-          %td 34 min
-          %td 17 Jan 2014
-        %tr
-          %td 10k Train
-          %td 5 mi
-          %td 60 min
-          %td 16 Jan 2014
-        %tr
-          %td Zombie Run 
-          %td 50 mi
-          %td 600 min
-          %td 14 Jan 2014
-
-
-%a{ :href => "/logout"} Logout
+  %h2.table-title Run Logs 14 Days
+  %table.table-main
+    %thead
+      %tr
+        %th.caption Name
+        %th.caption Date
+        %th.caption Distance 
+        %th.caption Time
+        %th.caption Average Pace
+        %tbody
+        - @my_runs.each do |run|
+          %tr
+            %td
+              = run.name
+            %td
+              = run.format_date
+            %td
+              = "#{run.miles} miles"
+            %td
+              = run.time_in_minutes 
+            %td
+              = "#{run.mile_pace_in_minutes}/mile"

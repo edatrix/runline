@@ -1,6 +1,26 @@
-%section.masthead
-  %h1 Welcome to Runline
-  %h2 Create virtual running groups and compete with friends.
+%section.content-section-home
+  %header.home-header
+    %h1.body-copy Virtual Racing With Friends
+    = button_to "Login with MapMyFitness", login_path, :method => :get, :class => "btn-primary"
 
-%a{ :href => "/login"} Login with MapMyFitness
+  %ul.panel-container
+    %li
+      %figure
+        %img.image-box(src="/assets/track-runner.png" alt="running-logo" height="225" width="300")
+        %figcaption.box-content
+          %h3 Track your Stats
+          %p Log your runs and keep track of your personal stats on Runline's user dashboard.
 
+    %li
+      %figure.media-item
+        %img.image-box(src="/assets/one-runner.png" alt="one-runner" height="225" width="300")
+        %figcaption.box-content
+          %h3 Find Friends
+          %p Connect with friends who are Runline users and invite those who aren't to join the fun!
+
+    %li
+      %figure.media-item
+        %img.image-box(src="/assets/two-runners.png" alt="two-runners" height="225" width="300")
+        %figcaption.box-content
+          %h3 Compete!
+          %p Keep yourself in check by seeing how you stack up against other Runline users.

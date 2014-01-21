@@ -32,8 +32,8 @@ describe User do
   end
 
   it "can have many runs" do 
-    run = FactoryGirl.create(:run, user_id: @user1.id)
-    second_run = FactoryGirl.create(:second_run, user_id: @user1.id)
+    FactoryGirl.create(:run, user_id: @user1.id)
+    FactoryGirl.create(:second_run, user_id: @user1.id)
     expect(@user1.runs.size).to eq 2
   end
 
@@ -59,6 +59,10 @@ describe User do
   it "queries its approved friends" do
     expect(@user1.total_approved_friends).to include(@user2)
     expect(@user2.total_approved_friends).to include(@user1)
+  end
+
+  it "can find all users except the one passed in" do
+    expect(User.except(@user1)).to_not include(@user1)
   end
 
 end

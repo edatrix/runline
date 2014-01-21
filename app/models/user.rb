@@ -1,3 +1,5 @@
+require 'faraday'
+
 class User < ActiveRecord::Base
   validates :username, :presence => true, :uniqueness => true
   validates :email, :presence => true
@@ -8,14 +10,14 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
-  def self.find_or_create_by_auth(auth)
-    find_or_create_by_provider_and_uid(auth["provider"],
-                                       auth["uid"],
-                                       username: auth["info"]["first_name"],
-                                       email: auth["info"]["email"],
-                                       token: auth["credentials"]["token"],
-                                       secret: auth["credentials"]["secret"]
-                                      )
+  scope :except, proc {|user| where("id != ?", user.id)}
+
+  def self.find_or_create_by_auth(user_data)
+    where(:provider => user_data.provider, :uid => user_data.uid).first_or_create(
+                                                                                  username: user_data.first_name + " " + user_data.last_name,
+                                                                                  email: user_data.email,
+                                                                                  token: user_data.token
+                                                                                  )
   end
 
   def add_friend(friend)
@@ -58,6 +60,28 @@ class User < ActiveRecord::Base
     format_seconds_for_views(total_seconds / total_distance_in_miles)
   end
 
+  def compare_total_average_mile_pace_with(friend) 
+    if pace > friend.pace
+      diff = pace - friend.pace
+      "Your average mile is #{format_seconds_for_views(diff)} slower than #{friend.username}'s"
+    else
+      diff = friend.pace - pace
+      "Your average mile is #{format_seconds_for_views(diff)} faster than #{friend.username}'s"
+    end
+  end
+
+  def pace
+    total_seconds = 0
+    runs.each do |run|
+      total_seconds += run.run_time
+    end
+    total_distance = 0
+    runs.each do |run|
+      total_distance += run.miles
+    end
+    total_seconds/total_distance 
+  end
+
   def total_distance_in_miles
     distance = 0
     runs.each do |run|
@@ -67,15 +91,7 @@ class User < ActiveRecord::Base
   end
 
   def fastest_run
-    run_pace = 30
-    fast_runs = []
-    runs.each do |run|
-      if (run.run_time / run.distance.to_f) < run_pace 
-        run_pace = (run.run_time / run.distance.to_f)
-        fast_runs << run
-      end
-    end
-    fast_runs.last
+    runs.min_by { |run| (run.run_time / run.distance.to_f)}
   end
 
   def fastest_mile_pace
