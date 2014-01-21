@@ -72,4 +72,13 @@ describe User do
     expect(@user1.compare_total_average_mile_pace_with(@user2)).to eq("Your average mile is 0:40 faster than user2's")
   end
 
+  it "can find all users that are not pending or approved friends or myself" do
+    expect(User.requestable_users(@user1)).to_not include(@user1)
+    expect(User.requestable_users(@user1)).to include(@user4)
+    expect(User.requestable_users(@user1)).to include(@user5)
+    expect(User.requestable_users(@user1)).to_not include(@user2)
+    expect(User.requestable_users(@user1)).to_not include(@user7)
+    expect(User.requestable_users(@user1)).to_not include(@user6) 
+  end
+
 end
