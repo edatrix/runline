@@ -65,4 +65,13 @@ describe User do
     expect(User.except(@user1)).to_not include(@user1)
   end
 
+  it "can find all users that are not pending or approved friends or myself" do
+    expect(User.requestable_users(@user1)).to_not include(@user1)
+    expect(User.requestable_users(@user1)).to include(@user4)
+    expect(User.requestable_users(@user1)).to include(@user5)
+    expect(User.requestable_users(@user1)).to_not include(@user2)
+    expect(User.requestable_users(@user1)).to_not include(@user7)
+    expect(User.requestable_users(@user1)).to_not include(@user6) 
+  end
+
 end
