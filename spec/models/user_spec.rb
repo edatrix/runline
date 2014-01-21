@@ -11,6 +11,9 @@ describe User do
     @user6 = FactoryGirl.create(:user, username: "user6")
     @user7 = FactoryGirl.create(:user, username: "user7")
 
+    FactoryGirl.create(:run, run_time: 100, distance: 4000, user_id: @user1.id)
+    FactoryGirl.create(:run, run_time: 200, distance: 4000, user_id: @user2.id)
+
     Friendship.create(user_id: 1, friend_id: 2, status: "approved")
     Friendship.create(user_id: 1, friend_id: 3, status: "approved")
     Friendship.create(user_id: 7, friend_id: 1, status: "approved")
@@ -34,7 +37,7 @@ describe User do
   it "can have many runs" do 
     FactoryGirl.create(:run, user_id: @user1.id)
     FactoryGirl.create(:second_run, user_id: @user1.id)
-    expect(@user1.runs.size).to eq 2
+    expect(@user1.runs.size).to eq 3
   end
 
   it "can count its friends" do
@@ -63,6 +66,10 @@ describe User do
 
   it "can find all users except the one passed in" do
     expect(User.except(@user1)).to_not include(@user1)
+  end
+
+  it "can find the difference in pace between 2 users" do
+    expect(@user1.compare_total_average_mile_pace_with(@user2)).to eq("Your average mile is 0:40 faster than user2's")
   end
 
 end
