@@ -22,7 +22,10 @@ Runline::Application.routes.draw do
       delete :reject
     end
   end
-  delete "/friendships" => "friendships#destroy"
-  post "/friendships" => "friendships#create", as: :add_friend
+  delete "/friendships", to: "friendships#destroy"
+  post "/friendships", to: "friendships#create", as: :add_friend
+
+  #post "/invites", to: "invites#send", as: :send_invite
+  resources :invites, :only => [:create]
 
 end
