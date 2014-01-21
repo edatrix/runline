@@ -31,7 +31,7 @@
             %td
               = @diff_miles
             %td
-              = @diff_pace
+              = @current_user.compare_total_average_mile_pace_with(@friend)
             %td
               = @diff_longest_run
 
