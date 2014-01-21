@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
       friendship.update(status: "pending")
     else
       Friendship.create(user_id: id, friend_id: friend.id, status: "pending")
-      send_friend_request_email(friend.email, self.username)
+      # send_friend_request_email(friend.email, self.username)
     end
   end
 
@@ -60,58 +60,31 @@ class User < ActiveRecord::Base
   end
 
   def total_average_mile_pace
-    total_seconds = 0
-    runs.each do |run|
-      total_seconds += run.run_time
-    end
-    total_distance = 0
-    runs.each do |run|
-      total_distance += run.miles
-    end
-    format_seconds_for_views(total_seconds / total_distance_in_miles)
+    RunStatCalculator.total_average_mile_pace_for(self)
   end
 
   def compare_total_average_mile_pace_with(friend) 
-    if pace > friend.pace
-      diff = pace - friend.pace
-      "Your average mile is #{format_seconds_for_views(diff)} slower than #{friend.username}'s"
-    else
-      diff = friend.pace - pace
-      "Your average mile is #{format_seconds_for_views(diff)} faster than #{friend.username}'s"
-    end
+    RunStatCalculator.compare_total_average_mile_pace_for(self, friend)
   end
 
   def pace
-    total_seconds = 0
-    runs.each do |run|
-      total_seconds += run.run_time
-    end
-    total_distance = 0
-    runs.each do |run|
-      total_distance += run.miles
-    end
-    total_seconds/total_distance 
+    RunStatCalculator.pace_for(self)
   end
 
   def total_distance_in_miles
-    distance = 0
-    runs.each do |run|
-      distance += run.miles
-    end
-    distance.round(2)
+    RunStatCalculator.total_distance_in_miles_for(self)
   end
 
   def fastest_run
-    runs.min_by { |run| (run.run_time / run.distance.to_f)}
+    RunStatCalculator.fastest_run_for(self)
   end
 
   def fastest_mile_pace
-    fastest_run.mile_pace_in_minutes
+    RunStatCalculator.fastest_mile_pace_for(self)
   end
 
   def longest_run
-    runs_by_distance = runs.sort! { |run| run.distance }
-    runs_by_distance.first
+    RunStatCalculator.longest_run_for(self)
   end
 
   def format_seconds_for_views(total_seconds)
