@@ -88,7 +88,7 @@ class User < ActiveRecord::Base
     runs.each do |run|
       distance += run.miles
     end
-    distance
+    distance.round(2)
   end
 
   def fastest_run
