@@ -20,8 +20,8 @@
   %section.container(role="main")
     = render 'layouts/header'
     = render 'layouts/nav' unless @disable_nav
-    = yield
     = flash.notice
+    = yield
     = render 'layouts/footer'
 
 

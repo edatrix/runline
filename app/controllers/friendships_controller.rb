@@ -6,10 +6,11 @@ class FriendshipsController < ApplicationController
   end
 
   def create
+    friend = User.find(params[:user_id])
     if current_user.add_friend(friend)
-      flash.notice = "Your request to #{friendship_params} has been sent!"
+      flash.notice = "Your request to #{friend.username} has been sent!"
     else
-       flash.notice = "Could not find user: #{friendship_params}"      
+      flash.notice = "Could not find that user!"      
     end
     redirect_to :back
   end
@@ -35,14 +36,14 @@ class FriendshipsController < ApplicationController
     redirect_to :back
   end
 
-  private
+  # private
 
   def friendship_params
-    params.require(:friendship).require(:friend_name)
+    params.require(:friendship).require(:email)
   end
 
-  def friend
-    User.find_by(username: friendship_params)
-  end
+  # def friend
+  #   User.find_by(username: friendship_params)
+  # end
 
 end
