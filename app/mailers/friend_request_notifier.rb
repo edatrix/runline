@@ -3,9 +3,8 @@ class FriendRequestNotifier < ActionMailer::Base
   default from: "navyosu@gmail.com"
 
   def email_friend(email, requestor_name)
-    @email = email
     @requestor = requestor_name
-    mail(to: @email,
+    mail(to: email,
       subject: "#{@requestor} would like to run with you on Runline!")
   end
 
