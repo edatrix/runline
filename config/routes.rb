@@ -1,4 +1,8 @@
+require 'resque/server'
+
 Runline::Application.routes.draw do
+  mount Resque::Server.new, at: "/resque"
+  
   root "home_page#index"
 
   get "/login" => redirect("/auth/mapmyfitness"), as: :login
