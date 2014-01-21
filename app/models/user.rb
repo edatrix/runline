@@ -60,6 +60,16 @@ class User < ActiveRecord::Base
     format_seconds_for_views(total_seconds / total_distance_in_miles)
   end
 
+  def compare_total_average_mile_pace_with(friend) 
+    if pace > friend.pace
+      diff = pace - friend.pace
+      "Your average mile is #{format_seconds_for_views(diff)} slower than #{friend.username}'s"
+    else
+      diff = friend.pace - pace
+      "Your average mile is #{format_seconds_for_views(diff)} faster than #{friend.username}'s"
+    end
+  end
+
   def pace
     total_seconds = 0
     runs.each do |run|
