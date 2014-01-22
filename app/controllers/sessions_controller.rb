@@ -11,10 +11,6 @@ class SessionsController < ApplicationController
     session[:user_id] = @user.id
     @user.save!
 
-    # photo_store = MapMyFitness::PhotoStore.new(current_user.token)
-    # photo_url = store.photo_by(current_user.uid)
-    # puts photo_url.first.url
-
     # store = MapMyFitness::WorkoutStore.new(current_user.token)
     # runs = store.workouts_by_user_in_last_days(current_user.uid, 14)
     # runs.each do |run|
