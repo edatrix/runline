@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.1'
 gem 'rspec-rails'
 gem 'chosen-rails'
+gem 'thin'
 
 group :development, :test do
   gem 'dotenv-rails'
