@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 20140122171707) do
     t.string   "provider"
     t.string   "uid"
     t.string   "token"
-    t.string   "secret"
     t.string   "photo_url"
   end
 

@@ -6,96 +6,102 @@
     %h1 Your friend doesn't have any runs! Tell them to get off their butt and get out there!
   - else
 
-  %div.compare-stat-container
-    %div.compare-stat-element
-      %ul.compare-stat-element
-        %li
-        = current_user.username
-        %li.compare-stat-data
-          = "#{current_user.total_distance_in_miles} miles"
-        %li.compare-mi-notation /mi
-        %li.compare-stat-title Total Distance
-      %ul.compare-stat-element
-        %li.compare-stat-data
-          = "#{current_user.total_average_mile_pace}/mile"
-        %li.compare-mi-notation /mi
-        %li.compare-stat-title Average Pace
-      %ul.compare-stat-element
-        %li.compare-stat-data
-          = "#{current_user.longest_run.miles} miles"
-        %li.compare-mi-notation /mi
-        %li.compare-stat-title Longest Run
+    %div.compare-stat-container
+      %div.compare-stat-set
+        %ul.compare-stat-elements
+          %li.stat-title
+            = current_user.username
+          %li.compare-stat-data
+            = "#{current_user.total_distance_in_miles}"
+          %li.compare-mi-notation /mi
+          %li.compare-stat-title Total Distance
+        %ul.compare-stat-elements
+          %li.compare-stat-data
+            = "#{current_user.total_average_mile_pace}"
+          %li.compare-mi-notation /mi
+          %li.compare-stat-title Average Pace
+        %ul.compare-stat-elements
+          %li.compare-stat-data
+            = "#{current_user.longest_run.miles}"
+          %li.compare-mi-notation /mi
+          %li.compare-stat-title Longest Run
 
-    %div.compare-stat-element
-      %ul.compare-stat-element
-        %li
-        = @friend.username
-        %li.compare-stat-data
-          = "#{@friend.total_distance_in_miles} miles"
-        %li.compare-stat-title Total Distance
-      %ul.compare-stat-element
-        %li.compare-stat-data
-          = "#{@friend.total_average_mile_pace}/mile"
-        %li.compare-stat-title Average Pace
-      %ul.compare-stat-element
-        %li.compare-compare-stat-data
-          = "#{@friend.longest_run.miles} miles"
-        %li.compare-stat-title Longest Run
+      %div.compare-stat-set
+        %ul.compare-stat-elements
+          %li.stat-title
+            = @friend.username
+          %li.compare-stat-data
+            = "#{@friend.total_distance_in_miles}"
+          %li.compare-mi-notation /mi
+          %li.compare-stat-title Total Distance
+        %ul.compare-stat-elements
+          %li.compare-stat-data
+            = "#{@friend.total_average_mile_pace}"
+          %li.compare-mi-notation /mi
+          %li.compare-stat-title Average Pace
+        %ul.compare-stat-elements
+          %li.compare-stat-data
+            = "#{@friend.longest_run.miles}"
+          %li.compare-mi-notation /mi
+          %li.compare-stat-title Longest Run
 
-    %div.compare-stat-element
-      %ul.compare-stat-element
-        %li Difference
-        %li.compare-stat-data
-          = @diff_miles
-        %li.compare-stat-title Total Distance
-      %ul.compare-stat-element
-        %li.compare-stat-data
-          = current_user.compare_total_average_mile_pace_with(@friend)
-        %li.compare-stat-title Average Pace
-      %ul.compare-stat-element
-        %li.compare-stat-data
-          = @diff_longest_run
-        %li.compare-stat-title Longest Run
+      %div.compare-stat-set
+        %ul.compare-stat-elements
+          %li.stat-title Difference
+          %li.compare-stat-data
+            = @diff_miles
+          %li.compare-mi-notation /mi
+          %li.compare-stat-title Total Distance
+        %ul.compare-stat-elements
+          %li.compare-stat-data
+            = current_user.compare_total_average_mile_pace_with(@friend)
+          %li.compare-mi-notation /mi
+          %li.compare-stat-title Average Pace
+        %ul.compare-stat-elements
+          %li.compare-stat-data
+            = @diff_longest_run
+          %li.compare-mi-notation /mi
+          %li.compare-stat-title Longest Run
 
-%div.compare-log-container
-  %div.compare-logs
-    %h2.table-title Run Logs:  #{current_user.username} 
-    %table.table-main
-      %thead
-        %tr
-          %th.caption Run
-          %th.caption Distance
-          %th.caption Run Time
-          %th.caption Workout Datetime
-          %tbody
-          - @my_runs.each do |run|
+    %div.compare-log-container
+      %div.compare-logs
+        %h2.table-title Run Logs:  #{current_user.username} 
+        %table.table-main
+          %thead
             %tr
-              %td
-                = run.name 
-              %td
-                = "#{run.miles}"
-              %td
-                = run.time_in_minutes
-              %td  
-                = run.workout_datetime
-  %div.compare-logs
-    %h2.table-title Run Logs:  #{@friend.username}
-    %table.table-main
-      %thead
-        %tr
-          %th.caption Run
-          %th.caption Distance
-          %th.caption Run Time
-          %th.caption Workout Datetime
-          %tbody
-          - @friend_runs.each do |run|
+              %th.caption Name
+              %th.caption Distance
+              %th.caption Time
+              %th.caption Date
+              %tbody
+              - @my_runs.each do |run|
+                %tr
+                  %td
+                    = run.name 
+                  %td
+                    = "#{run.miles}"
+                  %td
+                    = run.time_in_minutes
+                  %td  
+                    = run.workout_datetime
+      %div.compare-logs
+        %h2.table-title Run Logs:  #{@friend.username}
+        %table.table-main
+          %thead
             %tr
-              %td
-                = run.name
-              %td
-                = "#{run.miles} miles"
-              %td
-                = run.time_in_minutes
-              %td  
-                = run.workout_datetime
+              %th.caption Name
+              %th.caption Distance
+              %th.caption Time
+              %th.caption Date
+              %tbody
+              - @friend_runs.each do |run|
+                %tr
+                  %td
+                    = run.name
+                  %td
+                    = "#{run.miles} mi"
+                  %td
+                    = run.time_in_minutes
+                  %td  
+                    = run.workout_datetime
 

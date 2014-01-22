@@ -11,12 +11,14 @@
             %td
               = image_tag(friendship.friend.photo_url)
               = friendship.friend.username
+            %td.action-link-container-compare
               = link_to "Compare", compare_path(friendship.friend.id), :method => :get, :class => "compare-link"
               = link_to "/ Remove Friend", remove_friendship_path(friendship), :method => :delete, :class => "remove-link"
           - else
             %td
               = image_tag(friendship.user.photo_url) 
               = friendship.user.username
+            %td.action-link-container-compare
               = link_to "Compare", compare_path(friendship.user.id), :method => :get, :class => "compare-link"
               = link_to "/ Remove Friend", remove_friendship_path(friendship), :method => :delete, :class => "remove-link"
 
@@ -28,8 +30,9 @@
         %tbody
           - current_user.pending_inverse_friendships.each do |friendship|
             %tr
-              %td
+              %td.action-link-container-approve
                 = friendship.user.username
+              %td.action-link-container-approve
                 = link_to "Approve", approve_friendship_path(friendship), :method => :put, :class => "reject-link"
                 = link_to "/ Reject", reject_friendship_path(friendship), :method => :delete, :class => "approve-link"
 

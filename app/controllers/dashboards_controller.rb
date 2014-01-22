@@ -1,8 +1,15 @@
 class DashboardsController < ApplicationController
 
   def show
-    @user = current_user
-    @my_runs = current_user.runs
+    if current_user.runs.empty?
+      redirect_to no_runs_path
+    else
+      @user = current_user
+      @my_runs = current_user.runs
+    end
   end
-  
+
+  def no_runs
+
+  end
 end

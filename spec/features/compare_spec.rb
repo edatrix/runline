@@ -18,5 +18,4 @@ describe "Compare Friend Stats" do
     current_path.should eq(compare_path(@user.id))
     expect(page).to have_content("How do you stack up against")
   end
-
 end
