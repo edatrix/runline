@@ -1,7 +1,7 @@
-require 'resque/server'
+# require 'resque/server'
 
 Runline::Application.routes.draw do
-  mount Resque::Server.new, at: "/resque"
+  # mount Resque::Server.new, at: "/resque"
   
   root "home_page#index"
 
