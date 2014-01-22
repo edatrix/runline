@@ -10,6 +10,7 @@ Runline::Application.routes.draw do
   get "/logout", to: "sessions#destroy"
 
   get "/dashboard", to: "dashboards#show"
+  get "/no-runs", to: "dashboards#no_runs", as: :no_runs
   get "/compare/:id", to: "compare#show", as: :compare
   get "/profile", to: "profile#show"
 
