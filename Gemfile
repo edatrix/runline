@@ -4,10 +4,12 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.1'
 gem 'rspec-rails'
 gem 'chosen-rails'
+gem 'thin'
 
 group :development, :test do
   gem 'dotenv-rails'
 end
+
 gem 'omniauth-mapmyfitness-oauth2', :github => "jcasimir/omniauth-mapmyfitness-oauth2"
 gem 'mapmyfitness', :github => "billy22g/mapmyfitness"
 gem 'faraday'
@@ -18,6 +20,7 @@ gem 'resque_mailer'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'sass-rails'
+gem 'whenever', :require => false
 
 # Use postgresql as the database for Active Record
 group :development, :test do

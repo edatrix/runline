@@ -10,7 +10,7 @@ class FriendshipsController < ApplicationController
     if current_user.add_friend(friend)
       flash.notice = "Your request to #{friend.username} has been sent!"
     else
-       flash.notice = "Could not find that user!"      
+      flash.notice = "Could not find that user!"      
     end
     redirect_to :back
   end
@@ -38,9 +38,9 @@ class FriendshipsController < ApplicationController
 
   # private
 
-  # def friendship_params
-  #   params.require(:friendship).require(:friend_name)
-  # end
+  def friendship_params
+    params.require(:friendship).require(:email)
+  end
 
   # def friend
   #   User.find_by(username: friendship_params)
