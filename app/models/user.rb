@@ -43,15 +43,8 @@ class User < ActiveRecord::Base
   end
 
   def create_or_update_friendship(friend)
-    if Friendship.find_by(user_id: friend.id, friend_id: id) ||
-       Friendship.find_by(user_id: id, friend_id: friend.id)
-       friendship = Friendship.find_by(user_id: friend.id, friend_id: id) ||
-                   Friendship.find_by(user_id: id, friend_id: friend.id)
-       friendship.update(status: "pending")
-    else
-      Friendship.create(user_id: id, friend_id: friend.id, status: "pending")
-      User.send_friend_request_email(friend.email, self.username)
-    end
+    Friendship.create(user_id: id, friend_id: friend.id, status: "pending")
+    User.send_friend_request_email(friend.email, self.username)
   end
 
   def self.invite_new_friend_email(email, username)
