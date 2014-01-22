@@ -30,11 +30,11 @@ describe User do
   it { should have_many(:inverse_friendships) }
   it { should have_many(:inverse_friends) }
 
-  it "should be created with valid attributes" do 
+  it "should be created with valid attributes" do
     @user1.should be_valid
   end
 
-  it "can have many runs" do 
+  it "can have many runs" do
     FactoryGirl.create(:run, user_id: @user1.id)
     FactoryGirl.create(:second_run, user_id: @user1.id)
     expect(@user1.runs.size).to eq 3
@@ -42,12 +42,16 @@ describe User do
 
   it "can count its friends" do
     expect(@user1.friends.count).to eq(2)
-  end 
+  end
 
   it "can request a friend" do
     @user1.add_friend(@user4)
     @user1.add_friend(@user5)
     expect(@user1.total_pending_friends.count).to eq(3)
+  end
+
+  it "has total approved friends" do
+    expect(@user1.total_approved_friends.count).to_not eq(0)
   end
 
   it "can count approved friends" do
@@ -69,7 +73,7 @@ describe User do
   end
 
   it "can find the difference in pace between 2 users" do
-    expect(@user1.compare_total_average_mile_pace_with(@user2)).to eq("Your average mile is 0:40 faster than user2's")
+    expect(@user1.compare_total_average_mile_pace_with(@user2)).to eq("0:40")
   end
 
   it "can find all users that are not pending or approved friends or myself" do
@@ -78,7 +82,7 @@ describe User do
     expect(User.requestable_users(@user1)).to include(@user5)
     expect(User.requestable_users(@user1)).to_not include(@user2)
     expect(User.requestable_users(@user1)).to_not include(@user7)
-    expect(User.requestable_users(@user1)).to_not include(@user6) 
+    expect(User.requestable_users(@user1)).to_not include(@user6)
   end
 
 end
