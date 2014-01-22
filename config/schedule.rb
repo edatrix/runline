@@ -1,13 +1,11 @@
 
 
+set :output, "#{path}/log/cron_log.log"
+
 every 1.day, :at => '4:30 am' do
   rake "runline:enqueue_runs_worker"
 end
 
-every 1.minute do
-  rake "runline:enqueue_runs_worker"
-  puts "Enqueueing job"
-end
 
 # Example:
 #
