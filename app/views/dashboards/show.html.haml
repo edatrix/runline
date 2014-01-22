@@ -1,31 +1,23 @@
 %section.content-section
-  %h2.table-title Aggregate Stats 14 Days
-  %table.table-main 
-    #runs-table
-    %thead
-      %tr
-        %th.caption Total Miles
-        %th.caption Average Pace
-        %th.caption Longest Run
-        %tbody
-          - unless current_user.runs.any?
-            %tr
-              %td
-                You have no runs!
-              %td
-                You have no runs!
-              %td
-                You have no runs!
-          - else
-            %tr
-              %td
-                = "#{current_user.total_distance_in_miles} miles"
-              %td
-                = "#{current_user.total_average_mile_pace}/mile"
-              %td
-                = "#{current_user.longest_run.miles} miles"
+  %h2.table-title Last Two Weeks 
+  %div.stat-container
+    %ul.dash-block
+      %li.stat-data
+        = "#{current_user.total_distance_in_miles}"
+      %li.mi-notation /mi
+      %li.stat-title Total Distance
+    %ul.dash-block
+      %li.stat-data
+        = "#{current_user.total_average_mile_pace}"
+      %li.mi-notation /mi
+      %li.stat-title Average Pace
+    %ul.dash-block
+      %li.stat-data
+        = "#{current_user.longest_run.miles}"
+      %li.mi-notation /mi
+      %li.stat-title Longest Run
 
-  %h2.table-title Run Logs 14 Days
+  %h2.table-title Run Logs
   %table.table-main
     %thead
       %tr
@@ -42,8 +34,8 @@
             %td
               = run.format_date
             %td
-              = "#{run.miles} miles"
+              = "#{run.miles} mi"
             %td
               = run.time_in_minutes 
             %td
-              = "#{run.mile_pace_in_minutes}/mile"
+              = "#{run.mile_pace_in_minutes} mi"

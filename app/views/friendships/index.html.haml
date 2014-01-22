@@ -10,13 +10,13 @@
           - if friendship.user_id == current_user.id
             %td
               = friendship.friend.username
-              = button_to "Remove Friend", remove_friendship_path(friendship), :method => :delete, :form_class => "friend-buttons"
-              = button_to "Compare", compare_path(friendship.friend.id), :method => :get, :form_class => "friend-buttons"
+              = link_to "Compare", compare_path(friendship.friend.id), :method => :get, :class => "compare-link"
+              = link_to "/ Remove Friend", remove_friendship_path(friendship), :method => :delete, :class => "remove-link"
           - else
             %td 
               = friendship.user.username
-              = button_to "Remove Friend", remove_friendship_path(friendship), :method => :delete, :form_class => "friend-buttons"
-              = button_to "Compare", compare_path(friendship.user.id), :method => :get, :form_class => "friend-buttons"
+              = link_to "Compare", compare_path(friendship.user.id), :method => :get, :class => "compare-link"
+              = link_to "/ Remove Friend", remove_friendship_path(friendship), :method => :delete, :class => "remove-link"
 
   %h2.table-title Pending Friends
   %table.table-main
@@ -28,6 +28,6 @@
             %tr
               %td
                 = friendship.user.username
-                = button_to "Reject", reject_friendship_path(friendship), :method => :delete, :form_class => "friend-buttons"
-                = button_to "Approve", approve_friendship_path(friendship), :method => :put, :form_class => "friend-buttons"
+                = link_to "Approve", approve_friendship_path(friendship), :method => :put, :class => "reject-link"
+                = link_to "/ Reject", reject_friendship_path(friendship), :method => :delete, :class => "approve-link"
 
