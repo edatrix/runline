@@ -27,10 +27,10 @@ class RunStatCalculator
     def compare_total_average_mile_pace_for(user, friend)
       if user.pace > friend.pace
         diff = user.pace - friend.pace
-        "Your average mile is #{user.format_seconds_for_views(diff)} slower than #{friend.username}'s"
+        "#{user.format_seconds_for_views(diff)}"
       else
         diff = friend.pace - user.pace
-        "Your average mile is #{user.format_seconds_for_views(diff)} faster than #{friend.username}'s"
+        "#{user.format_seconds_for_views(diff)}"
       end
     end
 
