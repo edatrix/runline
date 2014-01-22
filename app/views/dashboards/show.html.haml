@@ -1,30 +1,4 @@
 %section.content-section
-  %h2.table-title Aggregate Stats 14 Days
-  %table.table-main 
-    #runs-table
-    %thead
-      %tr
-        %th.caption Total Miles
-        %th.caption Average Pace
-        %th.caption Longest Run
-        %tbody
-          - unless current_user.runs.any?
-            %tr
-              %td
-                You have no runs!
-              %td
-                You have no runs!
-              %td
-                You have no runs!
-          - else
-            %tr
-              %td
-                = "#{current_user.total_distance_in_miles} miles"
-              %td
-                = "#{current_user.total_average_mile_pace}/mile"
-              %td
-                = "#{current_user.longest_run.miles} miles"           
-  %h2.table-title Run Logs 14 Days
 - if current_user.runs.empty?
   %p.no-run-message You have no runs!
 - else
@@ -47,7 +21,6 @@
       %li.stat-title Longest Run
 
   %h2.table-title Run Logs
->>>>>>> master
   %table.table-main
     %thead
       %tr
