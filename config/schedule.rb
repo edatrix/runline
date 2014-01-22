@@ -6,9 +6,11 @@ every 1.day, :at => '4:30 am' do
   rake "runline:enqueue_runs_worker"
 end
 
-every 1.minute do
+every 2.hours do
   rake "runline:enqueue_runs_worker"
 end
+
+
 
 # Example:
 #
