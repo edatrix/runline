@@ -1,15 +1,15 @@
 %section.masthead
-  %img.logo(src="assets/logo.png")
-    %nav
-      %ul.semantic-nav
-        %li.nav-list
-          %a.nav-links{:href => '/dashboard'} My Dash
-        %li.nav-list
-          %a.nav-links{:href => '/friendships'} My Friends
-        %li.nav-list
-          %a.nav-links{:href => '/friendships/requests'} Invite Friends 
-        %li.nav-list
-          %a.nav-links{ :href => "/profile"} Profile
-        %li.nav-list
-          %a.nav-links{ :href => "/logout"} Logout
+  = image_tag("logo.png", :class => "logo")
+  %nav
+    %ul.semantic-nav
+      %li.nav-list
+        %a.nav-links{:href => '/dashboard'} My Dash
+      %li.nav-list
+        %a.nav-links{:href => '/friendships'} My Friends
+      %li.nav-list
+        %a.nav-links{:href => '/friendships/requests'} Invite Friends 
+      %li.nav-list
+        %a.nav-links{ :href => "/profile"} Profile
+      %li.nav-list
+        %a.nav-links{ :href => "/logout"} Logout
 

@@ -1,6 +1,6 @@
 %section.content-section
   %h2.table-title Your Profile
-  = form_for current_user do |f|
+  = form_for current_user, :html => {:class => 'update-link'} do |f|
     = f.label :email
     = f.text_field :email
-    = f.submit "Update Your Profile" 
+    = f.submit "Update Email", :class => 'submit-btn'
