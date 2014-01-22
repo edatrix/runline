@@ -1,28 +1,22 @@
-%section.content-section-home
-  %header.home-header
-    %h1.body-copy Your Online Resource to Train and Compete with Friends 
-    %p Login with your Map My Run account and start inviting friends to share workouts. Runline will track your stats and compare your progress with friends.
-    %p Now you can train and compete with friends regardless of schedule or location.
-    = button_to "Login with MapMyFitness", login_path, :method => :get, :class => "btn-primary"
+%section.home-container
+  %img.home-image(src="/assets/trail-run.png" alt="runner")
+    %article.headline-container
+      %h1.headline Your Online Resource to Train and Compete with Friends 
+      %h2.sub-head Login with your Map My Run account and start inviting friends to share workouts. Runline will track your stats and compare your progress with friends. Now you can train and compete with friends regardless of schedule or location.
+      = link_to "Login with MapMyFitness", login_path, :method => :get, :class => "login-button"
 
-  %ul.panel-container
-    %li.home-page-list
-      %figure
-        %img.image-box(src="/assets/track-runner.png" alt="running-logo" height="225" width="300")
-        %figcaption.box-content
-          %h3 Run 
-          %p Log runs as you normally would using your Map My Run Account. 
+  %section.sub-head-container
+    %div.sub-head-media
+      %p.media-number 01
+      %h3.media-title Run 
+      %p.media-detail Log runs as you normally would using your Map My Run Account. 
 
-    %li.home-page-list
-      %figure.media-item
-        %img.image-box(src="/assets/one-runner.png" alt="one-runner" height="225" width="300")
-        %figcaption.box-content
-          %h3 Connect 
-          %p View your Map My Run stats in Runline and Invite your Friends to do the same.
+    %div.sub-head-media
+      %p.media-number 02
+      %h3.media-title Connect 
+      %p.media-detail Login into Runline and connect with Friends.
 
-    %li.home-page-list
-      %figure.media-item
-        %img.image-box(src="/assets/two-runners.png" alt="two-runners" height="225" width="300")
-        %figcaption.box-content
-          %h3 Compete
-          %p Compare your stats with friends and push each other to improve.
+    %div.sub-head-media
+      %p.media-number 03
+      %h3.media-title Compete
+      %p.media-detail Compare your stats with friends and push each other to improve.
