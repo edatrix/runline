@@ -5,10 +5,11 @@
     = select_tag "user", options_from_collection_for_select(User.requestable_users(current_user), "id", "username"), class: 'chosen-select',
       name: 'user_id'
     = submit_tag "Send Request"
+
   %p.body-copy Don't see a friend listed? Invite them to Runline:
-  = form_for current_user.friendships.new do |f|
-    = f.text_field :friend_name, placeholder: "email"
-    = f.submit "Send Friend Request"
+  = form_tag(invites_path) do
+    = text_field_tag "email"
+    = submit_tag "Email Request"
 
   %h2.table-title Awaiting Invite Response
   %table.table-main
