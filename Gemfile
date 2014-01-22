@@ -5,6 +5,7 @@ gem 'rails', '4.0.1'
 gem 'rspec-rails'
 gem 'chosen-rails'
 gem 'thin'
+gem 'coveralls', require: false
 
 group :development, :test do
   gem 'dotenv-rails'
