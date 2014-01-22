@@ -16,7 +16,7 @@ class FriendshipsController < ApplicationController
   end
 
   def approve
-    friendship = current_user.total_pending_friendships.find(params[:id]).first
+    friendship = current_user.total_pending_friendships.select { |friendship| friendship.id == params[:id].to_i }.first
     friendship.approve
     flash.notice = "Congrats on having a new friend! You're on your way to being a running social butterfly!"
     redirect_to :back
