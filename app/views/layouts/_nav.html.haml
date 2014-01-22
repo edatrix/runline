@@ -1,13 +1,15 @@
-%nav.main-nav
-  %ul.semantic-nav
-    %li.nav-list
-      %a{:href => '/dashboard'} My Dash
-    %li.nav-list
-      %a{:href => '/friendships'} My Friends
-    %li.nav-list
-      %a{:href => '/friendships/requests'} Invite Friends 
-    %li.nav-list
-      %a{ :href => "/profile"} Profile
-    %li.nav-list
-      %a{ :href => "/logout"} Logout
+%section.masthead
+  %img.logo(src="assets/logo.png")
+    %nav
+      %ul.semantic-nav
+        %li.nav-list
+          %a.nav-links{:href => '/dashboard'} My Dash
+        %li.nav-list
+          %a.nav-links{:href => '/friendships'} My Friends
+        %li.nav-list
+          %a.nav-links{:href => '/friendships/requests'} Invite Friends 
+        %li.nav-list
+          %a.nav-links{ :href => "/profile"} Profile
+        %li.nav-list
+          %a.nav-links{ :href => "/logout"} Logout
 

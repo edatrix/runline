@@ -18,9 +18,7 @@
 
 %body(role="document")
   %section.container(role="main")
-    = render 'layouts/header'
     = render 'layouts/nav' unless @disable_nav
     = yield
     = render 'layouts/footer'
-
 
