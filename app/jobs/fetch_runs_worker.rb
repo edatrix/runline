@@ -2,6 +2,7 @@ class FetchRunsWorker
   @queue = :fetch
 
   def self.perform
+    puts "Doing job"
     User.where("token IS NOT NULL AND uid IS NOT NULL").each do |user|
       store = MapMyFitness::WorkoutStore.new(user.token)
       runs = store.workouts_by_user_in_last_days(user.uid, 14)
