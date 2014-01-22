@@ -51,7 +51,6 @@ class User < ActiveRecord::Base
     else
       Friendship.create(user_id: id, friend_id: friend.id, status: "pending")
       User.send_friend_request_email(friend.email, self.username)
-      # send_friend_request_email(friend.email, self.username)
     end
   end
 
