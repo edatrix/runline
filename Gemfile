@@ -38,6 +38,8 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'factory_girl_rails'
+  gem 'simplecov', :require => false
+
 end
 
 group :production do
