@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/billy22g/mapmyfitness.git
-  revision: 0e49247f1bc860d7f0873fca39717cb3e653e2de
+  revision: 82f2aaf437c329f1efb27d20783929d87721c149
   specs:
     mapmyfitness (0.0.1)
 

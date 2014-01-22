@@ -24,7 +24,7 @@
                 = "#{current_user.total_average_mile_pace}/mile"
               %td
                 = "#{current_user.longest_run.miles} miles"
-
+    =image_tag(current_user.photo_url)              
   %h2.table-title Run Logs 14 Days
   %table.table-main
     %thead
