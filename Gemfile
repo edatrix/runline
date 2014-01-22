@@ -5,6 +5,7 @@ gem 'rails', '4.0.1'
 gem 'rspec-rails'
 gem 'chosen-rails'
 gem 'thin'
+gem 'coveralls', require: false
 
 group :development, :test do
   gem 'dotenv-rails'
@@ -37,6 +38,8 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'factory_girl_rails'
+  gem 'simplecov', :require => false
+
 end
 
 group :production do

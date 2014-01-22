@@ -9,12 +9,14 @@
           %tr
           - if friendship.user_id == current_user.id
             %td
+              = image_tag(friendship.friend.photo_url)
               = friendship.friend.username
             %td.action-link-container-compare
               = link_to "Compare", compare_path(friendship.friend.id), :method => :get, :class => "compare-link"
               = link_to "/ Remove Friend", remove_friendship_path(friendship), :method => :delete, :class => "remove-link"
           - else
-            %td 
+            %td
+              = image_tag(friendship.user.photo_url) 
               = friendship.user.username
             %td.action-link-container-compare
               = link_to "Compare", compare_path(friendship.user.id), :method => :get, :class => "compare-link"
