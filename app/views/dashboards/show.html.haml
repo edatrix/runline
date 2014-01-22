@@ -1,4 +1,7 @@
 %section.content-section
+- if current_user.runs.empty?
+  %p.no-run-message You have no runs!
+- else
   %h2.table-title Last Two Weeks 
   %div.stat-container
     %ul.dash-block
