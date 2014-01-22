@@ -293,6 +293,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails
   shoulda-matchers
+  simplecov
   sqlite3
   thin
   turbolinks
