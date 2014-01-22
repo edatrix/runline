@@ -1,26 +1,27 @@
-%section.content-section-home
-  %header.home-header
-    %h1.body-copy Virtual Racing With Friends
-    = button_to "Login with MapMyFitness", login_path, :method => :get, :class => "btn-primary"
+%section.masthead
+  %img.logo(src="assets/logo.png")
+    %p.home-login-link
+      MapMyFitness
+      %a.login-link{:href => '/login'} Login 
+%section.home-container
+  %img.home-image(src="/assets/trail-run.png" alt="runner")
+    %article.headline-container
+      %h1.headline Your Online Resource to Train and Compete with Friends 
+      %h2.sub-head Login with your Map My Run account and start inviting friends to share workouts. Runline will track your stats and compare your progress with friends. Now you can train and compete with friends regardless of schedule or location.
+      = link_to "Login with MapMyFitness", login_path, :method => :get, :class => "login-button"
 
-  %ul.panel-container
-    %li.home-page-list
-      %figure
-        %img.image-box(src="/assets/track-runner.png" alt="running-logo" height="225" width="300")
-        %figcaption.box-content
-          %h3 Track your Stats
-          %p Log your runs and keep track of your personal stats on Runline's user dashboard.
+  %section.sub-head-container
+    %div.sub-head-media
+      %p.media-number 01
+      %h3.media-title Run 
+      %p.media-detail Log runs as you normally would using your Map My Run Account. 
 
-    %li.home-page-list
-      %figure.media-item
-        %img.image-box(src="/assets/one-runner.png" alt="one-runner" height="225" width="300")
-        %figcaption.box-content
-          %h3 Find Friends
-          %p Connect with friends who are Runline users and invite those who aren't to join the fun!
+    %div.sub-head-media
+      %p.media-number 02
+      %h3.media-title Connect 
+      %p.media-detail Login into Runline and connect with Friends.
 
-    %li.home-page-list
-      %figure.media-item
-        %img.image-box(src="/assets/two-runners.png" alt="two-runners" height="225" width="300")
-        %figcaption.box-content
-          %h3 Compete!
-          %p Keep yourself in check by seeing how you stack up against other Runline users.
+    %div.sub-head-media
+      %p.media-number 03
+      %h3.media-title Compete
+      %p.media-detail Compare your stats with friends and push each other to improve.

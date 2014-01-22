@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     potential_friends = []
     where("id != ?", user.id).collect do |friend|
       if !user.total_approved_friends.include?(friend) && !user.total_pending_friends.include?(friend)
-        potential_friends << friend 
+        potential_friends << friend
       end
     end
     potential_friends
@@ -31,7 +31,6 @@ class User < ActiveRecord::Base
   end
 
   def add_friend(friend)
-
     unless total_approved_friends.include?(friend)
       create_or_update_friendship(friend)
     end
@@ -51,19 +50,25 @@ class User < ActiveRecord::Base
       friendship.update(status: "pending")
     else
       Friendship.create(user_id: id, friend_id: friend.id, status: "pending")
-      # send_friend_request_email(friend.email, self.username)
+      User.send_friend_request_email(friend.email, self.username)
     end
   end
 
+  def self.invite_new_friend_email(email, username)
+    link = "http://runline.tk"
+    FriendRequestNotifier.invite_new_friend(email, username, link).deliver
+  end
+
   def self.send_friend_request_email(email, username)
-    FriendRequestNotifier.email_friend(email, username).deliver
+    link = "http://runline.tk"
+    FriendRequestNotifier.request_friend(email, username, link).deliver
   end
 
   def total_average_mile_pace
     RunStatCalculator.total_average_mile_pace_for(self)
   end
 
-  def compare_total_average_mile_pace_with(friend) 
+  def compare_total_average_mile_pace_with(friend)
     RunStatCalculator.compare_total_average_mile_pace_for(self, friend)
   end
 
