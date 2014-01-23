@@ -14,14 +14,14 @@
           = friendship.friend.username
         %td.action-link-container-compare.table-actions
           = link_to "Compare", compare_path(friendship.friend.id), :method => :get, :class => "compare-link"
-          = link_to "/ Remove Friend", remove_friendship_path(friendship), :method => :delete, :class => "remove-link"
+          = link_to "/ Remove Friend", remove_friendship_path(friendship), :method => :delete, :class => "remove-link", :confirm => "Are you sure you want to remove #{friendship.friend.username}?"
       - else
         %td
           = image_tag(friendship.user.photo_url) 
           = friendship.user.username
         %td.action-link-container-compare.table-actions
           = link_to "Compare", compare_path(friendship.user.id), :method => :get, :class => "compare-link"
-          = link_to "/ Remove Friend", remove_friendship_path(friendship), :method => :delete, :class => "remove-link"
+          = link_to "/ Remove Friend", remove_friendship_path(friendship), :method => :delete, :class => "remove-link", :confirm => "Are you sure you want to remove #{friendship.friend.username}?"
 
   %h2.table-title Pending Friends
   %table.table-main

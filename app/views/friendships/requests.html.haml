@@ -15,18 +15,19 @@
       = text_field_tag "email"
       = submit_tag "Email Request"
 
-  %h2.table-title Awaiting Invite Confirmation
+  %h2.table-title Awaiting Confirmation
   %table.table-main
     %thead
       %tr
         %th.caption Name
+        %th.caption &nbsp;
         %tbody
         - current_user.pending_friendships.each do |friendship|
           %tr
             %td
               = friendship.friend.username
- 
-
+            %td
+              = link_to "Cancel Invite", cancel_friendship_path(friendship), :method => :delete, :class => "cancel-invite", :confirm => "Are you sure?"
 
 :javascript
   jQuery(function() {
