@@ -2,12 +2,12 @@
   %img.logo(src="assets/logo.png")
     %p.home-login-link
       MapMyFitness
-      %a.login-link{:href => '/login'} Login 
+      = link_to image_tag("stinger.png") + "Login", login_path, :class => "login-stinger"
 %section.home-container
   %img.home-image(src="/assets/trail-run.png" alt="runner")
     %article.headline-container
-      %h1.headline Your Online Resource to Train and Compete with Friends 
-      %h2.sub-head Login with your Map My Run account and start inviting friends to share workouts. Runline will track your stats and compare your progress with friends. Now you can train and compete with friends regardless of schedule or location.
+      %h1.headline Your Online Resource for Healthy Competition Amongst Friends
+      %h2.sub-head Login in today, authorize your Map My Run account, invite friends and start comparing stats. Runline makes it easy to train and compete with others regardless of schedule or location.
       = link_to "Login with MapMyFitness", login_path, :method => :get, :class => "login-button"
 
   %section.sub-head-container
@@ -19,7 +19,7 @@
     %div.sub-head-media
       %p.media-number 02
       %h3.media-title Connect 
-      %p.media-detail Login into Runline and connect with Friends.
+      %p.media-detail Invite Friends to connect with you via Runline and share their stats.
 
     %div.sub-head-media
       %p.media-number 03
