@@ -8,7 +8,11 @@ require 'rspec/autorun'
 require 'capybara/rspec'
 require 'coveralls'
 require 'simplecov'
-SimpleCov.start
+
+SimpleCov.start do
+  add_filter 'spec'
+end
+
 Coveralls.wear!('rails')
 
 # Requires supporting ruby files with custom matchers and macros, etc,

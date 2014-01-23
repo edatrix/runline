@@ -30,6 +30,20 @@ class User < ActiveRecord::Base
                                                                                   )
   end
 
+  def fetch_runs
+    store = MapMyFitness::WorkoutStore.new(self.token)
+    runs = store.workouts_by_user_in_last_days(self.uid, 14)
+    runs.each do |run|
+      Run.where(:mmf_identifier => run.id).first_or_create(
+                                                           user_id: User.find_by_uid(self.uid).id,
+                                                           name: run.name,
+                                                           distance: run.distance,
+                                                           run_time: run.duration,
+                                                           workout_datetime: run.started_at 
+                                                          )
+     end
+  end
+
   def add_friend(friend)
     unless total_approved_friends.include?(friend)
       create_or_update_friendship(friend)
