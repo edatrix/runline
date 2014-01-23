@@ -68,42 +68,47 @@
     %div.compare-log-container
       %div.compare-logs
         %h2.table-title Run Logs:  #{current_user.username} 
-        %table.table-main
-          %thead
-            %tr
-              %th.caption Name
-              %th.caption Distance
-              %th.caption Time
-              %th.caption Date
-              %tbody
-              - @my_runs.each do |run|
-                %tr
-                  %td
-                    = run.name 
-                  %td
-                    = "#{run.miles}"
-                  %td
-                    = run.time_in_minutes
-                  %td  
-                    = run.workout_datetime
+      %table.table-main
+        %thead
+          %tr
+            %th.caption Name
+            %th.caption Date
+            %th.caption Distance 
+            %th.caption Time
+            %th.caption Average Pace
+            %tbody
+            - @my_runs.each do |run|
+              %tr
+                %td
+                  = run.name
+                %td
+                  = run.format_date
+                %td
+                  = "#{run.miles} mi"
+                %td
+                  = run.time_in_minutes 
+                %td
+                  = "#{run.mile_pace_in_minutes} mi"
       %div.compare-logs
         %h2.table-title Run Logs:  #{@friend.username}
-        %table.table-main
-          %thead
-            %tr
-              %th.caption Name
-              %th.caption Distance
-              %th.caption Time
-              %th.caption Date
-              %tbody
-              - @friend_runs.each do |run|
-                %tr
-                  %td
-                    = run.name
-                  %td
-                    = "#{run.miles} mi"
-                  %td
-                    = run.time_in_minutes
-                  %td  
-                    = run.workout_datetime
-
+      %table.table-main
+        %thead
+          %tr
+            %th.caption Name
+            %th.caption Date
+            %th.caption Distance 
+            %th.caption Time
+            %th.caption Average Pace
+            %tbody
+            - @friend_runs.each do |run|
+              %tr
+                %td
+                  = run.name
+                %td
+                  = run.format_date
+                %td
+                  = "#{run.miles} mi"
+                %td
+                  = run.time_in_minutes 
+                %td
+                  = "#{run.mile_pace_in_minutes} mi"
