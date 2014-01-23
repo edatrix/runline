@@ -8,28 +8,28 @@ class FriendshipsController < ApplicationController
   def create
     friend = User.find(params[:user_id])
     if current_user.add_friend(friend)
-      flash.notice = "Your request to #{friend.username} has been sent!"
+      flash[:notice] = {:class => "flash", :body => "Your request to #{friend.username} has been sent!"}
     else
-      flash.notice = "Could not find that user!"
+      flash[:notice] = {:class =>  "flash", :body => "Could not find that user!"}
     end
     redirect_to :back
   end
 
   def approve
     find_pending_friendship.approve
-    flash.notice = "Congrats on having a new friend! You're on your way to being a running social butterfly!"
+    flash[:notice] = {:class => "flash", :body => "Congrats on having a new friend! You're on your way to being a running social butterfly!"}
     redirect_to :back
   end
 
   def remove
     find_friendship.remove
-    flash.notice = "You just showed them who the boss was!"
+    flash[:notice] = {:class => "flash", :body => "You just showed them who the boss was!"}
     redirect_to :back
   end
 
   def reject
     find_pending_friendship.reject
-    flash.notice = "REJECTED!!!"
+    flash[:notice] = {:class => "flash", :body => "REJECTED!!!"}
     redirect_to :back
   end
 

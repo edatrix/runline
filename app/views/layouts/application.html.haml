@@ -19,7 +19,9 @@
 %body(role="document")
   %section.container(role="main")
     = render 'layouts/nav' unless @disable_nav
-    = flash.notice
+    - if flash[:notice]
+      %div{:class => flash[:notice][:class]}
+        = flash[:notice][:body]
     = yield
     = render 'layouts/footer'
 
