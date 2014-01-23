@@ -27,6 +27,12 @@ class FriendshipsController < ApplicationController
     redirect_to :back
   end
 
+  def cancel
+    find_pending_friendship.remove
+    flash[:notice] = {:class => "flash", :body => "You didn't like them anyway."}
+    redirect_to :back
+  end
+
   def reject
     find_pending_friendship.reject
     flash[:notice] = {:class => "flash", :body => "REJECTED!!!"}
