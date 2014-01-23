@@ -1,5 +1,8 @@
 %section.content-section
-  %h2.table-title Last Two Weeks 
+  %ul.dash-head
+    %li.table-title Last Two Weeks 
+    %li.dash-head-update
+      = link_to "Update Runs", fetch_runs_path, :method => :get, :class => "update-run-link"
   %dl.dash-stats
     %dt
     %dd.dash-set
@@ -9,7 +12,7 @@
 
     %dd.dash-set
       %span.data<> #{current_user.total_average_mile_pace}
-      %span.data-marker mi
+      %span.data-marker /mi
       %p.data-title Average Pace
 
     %dd.dash-set
