@@ -1,11 +1,17 @@
-## Developing
+## Runline
 
-For OAuth2 to work properly you need to do two things:
+Runline is a gSchool project by Billy Griffin, Luke Martinez, Lauren Spath Luhring, and Bree Thomas.  This app enables users to track their activities with a personalized dashboard and daily feed of their runs, follow friends to see their activities, and compare data with friends. 
 
-### Credentials in the Environment
 
-Ensure you have the app environment variables (MMF_API_KEY and MMF_API_SECRET) saved in the .env file in the root of your directory.
+###Learning goals
 
-### Using a Special URL
+Learning goals of this project included:
 
-Access the app through this URL: http://www.127.0.0.1.xip.io:3000/
+- Consuming data from multiple third-party APIs
+- Building and using a wrapper gem to maintain separation between our application and third-party APIs 
+- Coordinating with project stakeholders (clients) to produce quality code and product with an emphasis on performance, UI, and overall user experience
+- Use of TDD to drive all layers of Rails development
+- Use of background workers
+- Deployment on a VPS instance built from the ground up
+
+Runline can be accessed at http://runline.tk/
