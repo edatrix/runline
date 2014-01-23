@@ -1,10 +1,17 @@
+$blue: #00AEEF
+$white: #FFFFFF
+$dark-grey: #231F20
+$light-grey: #BCBEC0
+$medium-grey: #939598
+
 body
-  background-color: #FFFFFF
+  background-color: white 
   margin: 0 auto
   max-width: 1440px
   padding: 0
   overflow: visible
-  font-family: 'Raleway', sans-serif
+  font-family: "Helvetica Neue", "HelveticaNeue", "Helvetica", "Arial", sans-serif
+  font-weight: 100
 
 a
   text-decoration: none
@@ -13,12 +20,33 @@ a
   margin-right: 6%
   margin-left: 6%
   margin-top: 5%
-  min-height: 500px
+  min-height: 55em
 
-.body-copy
-  font-size: 1.5em
+.bullet
+  margin-bottom: 2%
+
+.bullet-line
+  font-size: 1em
+  color: $medium-grey
+  font-weight: 200
+  padding-bottom: 1%
+  padding-left: 2%
+
+.bullet-num
+  font-size: 1em
+  font-weight: 200
+  color: $blue
+  float: left
+  padding-bottom: 1%
+
+dl, dd, h1, h2, h3, th, p
+  margin: 0
   font-weight: 100
-  color: #00AEEF
+
+ul
+  padding: 0
+  margin: 0
+
 
 .no-run-container
   margin-top: 46%

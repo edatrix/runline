@@ -1,17 +1,21 @@
 %section.content-section
   %h2.table-title Invite Friends
-  %p.body-copy  Search Existing Runline Members and Invite them to Share their Dashboard:
-  = form_tag(add_friend_path) do
-    = select_tag "user", options_from_collection_for_select(User.requestable_users(current_user), "id", "username"), class: 'chosen-select',
-      name: 'user_id'
-    = submit_tag "Send Request"
+  %div.bullet
+    %p.bullet-num 01
+    %p.bullet-line Invite an Existing Runline Member to Share their Dashboard:
+    = form_tag(add_friend_path) do
+      = select_tag "user", options_from_collection_for_select(User.requestable_users(current_user), "id", "username"), class: 'chosen-select',
+        name: 'user_id'
+      = submit_tag "Send Request"
 
-  %p.body-copy Don't see a friend listed? Invite them to Runline:
-  = form_tag(invites_path) do
-    = text_field_tag "email"
-    = submit_tag "Email Request"
+  %div.bullet
+    %p.bullet-num 02
+    %p.bullet-line Don't see a friend listed? Send them a Runline Invite:
+    = form_tag(invites_path) do
+      = text_field_tag "email"
+      = submit_tag "Email Request"
 
-  %h2.table-title Awaiting Invite Response
+  %h2.table-title Awaiting Invite Confirmation
   %table.table-main
     %thead
       %tr

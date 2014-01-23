@@ -1,15 +1,9 @@
 %section.masthead
   = image_tag("logo.png", :class => "logo")
-  %nav
-    %ul.semantic-nav
-      %li.nav-list
-        %a.nav-links{:href => '/dashboard'} My Dash
-      %li.nav-list
-        %a.nav-links{:href => '/friendships'} My Friends
-      %li.nav-list
-        %a.nav-links{:href => '/friendships/requests'} Invite Friends 
-      %li.nav-list
-        %a.nav-links{ :href => "/profile"} Profile
-      %li.nav-list
-        %a.nav-links{ :href => "/logout"} Logout
+  %ul.main-nav
+    %li.nav-item= link_to "My Dash", dashboard_path, class: "nav-links"
+    %li.nav-item= link_to "My Friends", friendships_path, class: "nav-links"
+    %li.nav-item= link_to "Invite Friends", requests_friendships_path, class: "nav-links"
+    %li.nav-item= link_to "Profile", profile_path, class: "nav-links"
+    %li.nav-item= link_to "Logout", logout_path, class: "nav-links"
 

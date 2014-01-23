@@ -7,61 +7,63 @@
   - else
 
     %div.compare-stat-container
-      %div.compare-stat-set
-        %ul.compare-stat-elements
-          %li.stat-title
-            = current_user.username
-          %li.compare-stat-data
-            = "#{current_user.total_distance_in_miles}"
-          %li.compare-mi-notation /mi
-          %li.compare-stat-title Total Distance
-        %ul.compare-stat-elements
-          %li.compare-stat-data
-            = "#{current_user.total_average_mile_pace}"
-          %li.compare-mi-notation /mi
-          %li.compare-stat-title Average Pace
-        %ul.compare-stat-elements
-          %li.compare-stat-data
-            = "#{current_user.longest_run.miles}"
-          %li.compare-mi-notation /mi
-          %li.compare-stat-title Longest Run
 
-      %div.compare-stat-set
-        %ul.compare-stat-elements
-          %li.stat-title
-            = @friend.username
-          %li.compare-stat-data
-            = "#{@friend.total_distance_in_miles}"
-          %li.compare-mi-notation /mi
-          %li.compare-stat-title Total Distance
-        %ul.compare-stat-elements
-          %li.compare-stat-data
-            = "#{@friend.total_average_mile_pace}"
-          %li.compare-mi-notation /mi
-          %li.compare-stat-title Average Pace
-        %ul.compare-stat-elements
-          %li.compare-stat-data
-            = "#{@friend.longest_run.miles}"
-          %li.compare-mi-notation /mi
-          %li.compare-stat-title Longest Run
+      %dl.compare-stat-list
+        %dt.compare-term= current_user.username
 
-      %div.compare-stat-set
-        %ul.compare-stat-elements
-          %li.stat-title Difference
-          %li.compare-stat-data
-            = @diff_miles
-          %li.compare-mi-notation /mi
-          %li.compare-stat-title Total Distance
-        %ul.compare-stat-elements
-          %li.compare-stat-data
-            = current_user.compare_total_average_mile_pace_with(@friend)
-          %li.compare-mi-notation /mi
-          %li.compare-stat-title Average Pace
-        %ul.compare-stat-elements
-          %li.compare-stat-data
-            = @diff_longest_run
-          %li.compare-mi-notation /mi
-          %li.compare-stat-title Longest Run
+        %dd.compare-item
+          %span.data<> #{current_user.total_distance_in_miles}
+          %span.data-marker mi
+          %p.data-title Total Distance
+
+        %dd.compare-item
+          %span.data<> #{current_user.total_average_mile_pace}
+          %span.data-marker mi
+          %p.data-title Average Pace
+
+        %dd.compare-item
+          %span.data<> #{current_user.longest_run.miles}
+          %span.data-marker mi
+          %p.data-title Longest Run
+
+
+      %dl.compare-stat-list
+        %dt.compare-term= @friend.username
+
+        %dd.compare-item
+          %span.data<> #{@friend.total_distance_in_miles}
+          %span.data-marker mi
+          %p.data-title Total Distance
+
+        %dd.compare-item
+          %span.data<> #{@friend.total_average_mile_pace}
+          %span.data-marker mi
+          %p.data-title Average Pace
+
+        %dd.compare-item
+          %span.data<> #{@friend.longest_run.miles}
+          %span.data-marker mi
+          %p.data-title Longest Run
+
+
+      %dl.compare-stat-list
+        %dt.compare-term Difference
+
+        %dd.compare-item.diff-positive
+          %span.data<> #{@diff_miles}
+          %span.data-marker mi
+          %p.data-title Further
+
+        -# %dd.compare-item(class="#{positive ? 'diff-positive' : 'diff-negative'}").diff-negative
+        %dd.compare-item.diff-negative
+          %span.data<> #{current_user.compare_total_average_mile_pace_with(@friend)}
+          %span.data-marker mi
+          %p.data-title Slower
+
+        %dd.compare-item.diff-positive
+          %span.data<> #{@diff_longest_run}
+          %span.data-marker mi
+          %p.data-title Further
 
     %div.compare-log-container
       %div.compare-logs

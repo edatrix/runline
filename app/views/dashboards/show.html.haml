@@ -1,21 +1,21 @@
 %section.content-section
   %h2.table-title Last Two Weeks 
-  %div.stat-container
-    %ul.dash-block
-      %li.stat-data
-        = "#{current_user.total_distance_in_miles}"
-      %li.mi-notation /mi
-      %li.stat-title Total Distance
-    %ul.dash-block
-      %li.stat-data
-        = "#{current_user.total_average_mile_pace}"
-      %li.mi-notation /mi
-      %li.stat-title Average Pace
-    %ul.dash-block
-      %li.stat-data
-        = "#{current_user.longest_run.miles}"
-      %li.mi-notation /mi
-      %li.stat-title Longest Run
+  %dl.dash-stats
+    %dt
+    %dd.dash-set
+      %span.data<> #{current_user.total_distance_in_miles}
+      %span.data-marker mi
+      %p.data-title Total Distance
+
+    %dd.dash-set
+      %span.data<> #{current_user.total_average_mile_pace}
+      %span.data-marker mi
+      %p.data-title Average Pace
+
+    %dd.dash-set
+      %span.data<> #{current_user.longest_run.miles}
+      %span.data-marker mi
+      %p.data-title Longest Run
 
   %h2.table-title Run Logs
   %table.table-main
