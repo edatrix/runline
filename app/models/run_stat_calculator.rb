@@ -39,7 +39,7 @@ class RunStatCalculator
       user.runs.each do |run|
         distance += run.miles
       end
-      distance.round(2)    
+      distance.round(2)
     end
 
     def fastest_run_for(user)
