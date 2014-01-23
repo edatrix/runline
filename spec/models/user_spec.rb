@@ -40,6 +40,10 @@ describe User do
     expect(@user1.runs.size).to eq 3
   end
 
+  it "can fetch the runs for a user" do 
+    expect(@user1.fetch_runs).to be_valid
+  end
+
   it "can count its friends" do
     expect(@user1.friends.count).to eq(2)
   end

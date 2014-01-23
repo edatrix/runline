@@ -14,6 +14,7 @@ class DashboardsController < ApplicationController
   end
 
   def fetch_runs
+    current_user.fetch_runs
     redirect_to dashboard_path
   end
 end
