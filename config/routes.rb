@@ -13,6 +13,7 @@ Runline::Application.routes.draw do
   get "/no-runs", to: "dashboards#no_runs", as: :no_runs
   get "/compare/:id", to: "compare#show", as: :compare
   get "/profile", to: "profile#show"
+  get "/fetch-runs", to: "dashboards#fetch_runs", as: :fetch_runs
 
   resources :users
   
@@ -30,7 +31,6 @@ Runline::Application.routes.draw do
   delete "/friendships", to: "friendships#destroy"
   post "/friendships", to: "friendships#create", as: :add_friend
 
-  #post "/invites", to: "invites#send", as: :send_invite
   resources :invites, :only => [:create]
 
 end
