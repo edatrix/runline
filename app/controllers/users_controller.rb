@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def update
     current_user.update_attributes(:email => params[:user][:email])
-    flash.notice = "Your email has been updated!"
+    flash[:notice] = {:class => "flash", :body => "Your email has been updated!"}
     redirect_to :back
   end
 
