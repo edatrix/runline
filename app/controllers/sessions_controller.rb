@@ -11,12 +11,12 @@ class SessionsController < ApplicationController
     session[:user_id] = @user.id
     @user.save!
     
-    redirect_to dashboard_path, notice: "You are logged in!"
+    redirect_to dashboard_path
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_path, notice: "You are logged out!"
+    redirect_to root_path
   end
 
 end
