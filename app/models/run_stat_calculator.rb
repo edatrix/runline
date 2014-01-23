@@ -51,8 +51,7 @@ class RunStatCalculator
     end
 
     def longest_run_for(user)
-      runs_by_distance = user.runs.sort! { |run| run.distance }
-      runs_by_distance.first
+      runs_by_distance = user.runs.max_by { |run| run.distance }
     end
   end
 end

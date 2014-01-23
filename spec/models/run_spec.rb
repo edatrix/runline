@@ -76,9 +76,9 @@ describe Run do
 
   it "finds the longest run from a user's runs" do
     run = FactoryGirl.create(:run)
-    run2 = FactoryGirl.create(:second_run)
-    run3 = FactoryGirl.create(:run, distance: 15000)
-    expect(@user1.longest_run.distance).to eq(run3.distance)
+    run2 = FactoryGirl.create(:second_run, distance: 4500)
+    run3 = FactoryGirl.create(:run, distance: 15)
+    expect(@user1.longest_run.distance).to eq(run.distance)
   end
 
   it "formats the workout date time to a readable date" do
