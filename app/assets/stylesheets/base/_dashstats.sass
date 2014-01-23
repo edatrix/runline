@@ -1,47 +1,53 @@
-.dash-block
+$blue: #00AEEF
+$white: #FFFFFF
+$dark-grey: #231F20
+$light-grey: #BCBEC0
+$medium-grey: #939598
+
+.dash-stats
   list-style: none
   display: inline-block
-  margin-right: 5%
-  padding: 4%
+  width: 100%
+  padding-right: 5%
+  margin-top: 2%
 
-.stat-title
-  font-size: 1.5em
-  color: #939598
-  margin-top: 6%
+.dash-set
+  float: left
+  margin-right: 9em
 
-.stat-data
-  font-size: 5em
-  color: #00AEEF
+.data-title
+  font-size: .5em 
+  color: $medium-grey
+  font-size: 1rem
+  font-weight: 200
+
+.data
+  font-size: 6em
+  color: $blue 
   font-weight: 100
 
-.mi-notation
-  color: #939598
-  margin-top: -20%
-  font-size: 1em
-  margin-left: 100%
+.data-marker
+  color: $light-grey
+  font-size: 2em
+  margin-left: .25rem
 
-.compare-stat-container
+.compare-term
+  font-size: 1.25em
+  font-weight: 200
+  color: $medium-grey
 
-.compare-stat-set
+.compare-item + .compare-item
+  margin-top: 2em
+
+.compare-stat-list
   display: inline-block
-  padding-right: 8%
-  padding-bottom: 6%
+  width: 33%
 
-.compare-stat-elements
-  list-style: none
+.diff-positive .compare-data,
+.diff-positive .compare-title
+  color: green
 
-.compare-stat-title
-  font-size: 1em
-  color: #939598
-  margin-top: 6% 
+.diff-negative .compare-data,
+.diff-negative .compare-title
+  color: red
 
-.compare-stat-data
-  font-size: 5em
-  color: #00AEEF
-  font-weight: 100
-
-.compare-mi-notation
-  color: #939598
-  margin-top: -20%
-  font-size: 1em
-  margin-left: 100%
