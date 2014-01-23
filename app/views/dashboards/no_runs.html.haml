@@ -1,3 +1,7 @@
-%p You have no runs.
+%section.no-run-container
+  %section.no-run-message
+    %p You have no runs. Get off your butt!
 
-= link_to "Update my Runs from MapMyFitness", fetch_runs_path, :method => :get, :class => "login-button"
+    %br
+
+    = link_to "Update my Runs from MapMyFitness", fetch_runs_path, :method => :get, :class => "login-button"
