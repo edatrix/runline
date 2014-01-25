@@ -18,12 +18,28 @@ Learning goals of this project included:
 
 Homepage
 
-![Homepage](/assets/images/home.png)
+![Homepage](app/assets/images/home.png)
 
 MapMyFitness Authentication
 
-![mmf-auth](/assets/images/mmf-auth.png)
+![mmf-auth](app/assets/images/mmf-auth.png)
 
 User Dashboard
 
 ![User Dash](app/assets/images/my-dash.png)
+
+Friends Page
+
+![Friends](app/assets/images/friends.png)
+
+Compare Page
+
+![Compare](app/assets/images/compare-dash.png)
+
+Invites
+
+![Invites](app/assets/images/invites.png)
+
+User Profile
+
+![Profile](app/asets/images/profile.png)
