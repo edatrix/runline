@@ -42,4 +42,4 @@ Invites
 
 User Profile
 
-![Profile](app/asets/images/profile.png)
+![Profile](app/assets/images/profile.png)
