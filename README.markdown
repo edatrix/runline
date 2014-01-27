@@ -2,6 +2,8 @@
 
 Runline is a gSchool project by Billy Griffin, Luke Martinez, Lauren Spath Luhring, and Bree Thomas.  This app enables users to track their activities with a personalized dashboard and daily feed of their runs, follow friends to see their activities, and compare data with friends. 
 
+access here: http://www.127.0.0.1.xip.io:3000/
+
 
 ###Learning goals
 
